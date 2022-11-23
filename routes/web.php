@@ -21,12 +21,14 @@ use App\Http\Controllers\User\StarContrllor;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name("home");
-Route::get('/home', [HomeController::class, 'index']);
-Route::get('/page', function(){
+Route::get('/home', function () {
+    return redirect('/');
+});
+Route::get('/page', function () {
     return redirect('/');
 });
 
-Route::get('login',[AuthController::class, 'index'])->name('login');
+Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('checkauth', [AuthController::class, 'CheckAuth']);
 Route::get('logout', [AuthController::class, 'logout']);
 
