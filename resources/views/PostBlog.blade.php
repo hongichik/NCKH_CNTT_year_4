@@ -1,19 +1,18 @@
 @extends('templates.default')
 
 @section('SeoConent')
-    <meta name="description" content="{{ $post->meta_description}}" />
+    <meta name="description" content="{{ $post->meta_description }}" />
     <meta name="keywords" content="{{ $post->seo_title }}" />
-    <meta property="og:locale" content="vi_VN" />
-    <meta property="og:type" content="webhome" />
     <meta property="og:title" content="{{ $post->title }}" />
-    <meta property="og:description" content="{{ $post->meta_description}} " />
-    <meta property="og:url" content="{{ asset('storage').'/' }}" />
-    <meta property="og:image" content="{{ asset('storage').'/' . $post->image}}" />
+    <meta property="og:description" content="{{ $post->meta_description }} " />
+    <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
+    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
     <meta property="og:home_name" content="{{ $post->title }}" />
-    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $post->title }}" />
-    <meta name="twitter:description" content="{{ $post->meta_description}} " />
-    <meta name="twitter:image" content="{{ asset('storage').'/' . $post->image}}" />
+    <meta name="twitter:description" content="{{ $post->meta_description }} " />
+    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
+    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
+    <meta property="og:image:secure_url" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
     <meta name="theme-color" content="#0086cd" />
 
     <title>{{ $post->title }}</title>
@@ -26,7 +25,8 @@
                 <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
                     <li class="breadcrumb-item"><a href="{{ asset('') }}">Trang chủ</a></li>
                     @if (isset($post))
-                        <li class="breadcrumb-item"><a href="{{ asset('post') . '/' . $urlCategory }}">{{ $nameCategory }}</a>
+                        <li class="breadcrumb-item"><a
+                                href="{{ asset('post') . '/' . $urlCategory }}">{{ $nameCategory }}</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
                     @endif

@@ -3,17 +3,22 @@
 @section('SeoConent')
     <meta name="description" content="{{ setting('home.description') }}" />
     <meta name="keywords" content="{{ setting('home.keyword') }}, {{ $nameCategory }}" />
-    <meta property="og:locale" content="vi_VN" />
-    <meta property="og:type" content="webhome" />
+
     <meta property="og:title" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
     <meta property="og:description" content="{{ setting('home.description') }} " />
-    <meta property="og:url" content="{{ asset('storage').'/' }}" />
-    <meta property="og:image" content="{{ asset('storage').'/' . setting('home.logo_Menu') }}" />
+    <meta property="og:url" content="{{ env('APP_URL').$_SERVER['REQUEST_URI'] }}" />
+    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
-    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
     <meta name="twitter:description" content="{{ setting('home.description') }} " />
-    <meta name="twitter:image" content="{{ asset('storage').'/' . setting('home.logo_Menu') }}" />
+    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+    <meta name="title" content="{{ setting('home.title') }}" />
+
+    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+    <meta property="og:image:secure_url"
+        content="{{ asset('storage') . '/' . str_replace('\\', '/',setting('home.logo_Menu')) }}" />
+
+
     <meta name="theme-color" content="#0086cd" />
 
     <title>{{ setting('home.title') }} | {{ $nameCategory }}</title>
