@@ -247,7 +247,7 @@
                                 <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
                                     {{ setting('dao-tao.title_2') }}</h2>
                                 <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
-                                    {{ setting('dao-tao.description_1') }}
+                                    {{ setting('dao-tao.description_2') }}
                                 </p>
                             </div>
                         </a>
@@ -266,7 +266,7 @@
                                 <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
                                     {{ setting('dao-tao.title_3') }}</h2>
                                 <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
-                                    {{ setting('dao-tao.description_1') }}
+                                    {{ setting('dao-tao.description_3') }}
                                 </p>
                             </div>
                         </a>
@@ -349,7 +349,8 @@
                                 @if ($key == 0) active @endif
                                 ">
                                 <div class="d-flex flex-column">
-                                    <img src="{{ asset('storage\\') }}{{ $hoat_dong->image }}" alt="{{ $hoat_dong->description }}" class="p-0 m-0 w-100 rounded"
+                                    <img src="{{ asset('storage\\') }}{{ $hoat_dong->image }}"
+                                        alt="{{ $hoat_dong->description }}" class="p-0 m-0 w-100 rounded"
                                         style="aspect-ratio: 3/2; object-fit: cover" />
                                     <h2 class="txt-blue-2 pt-2">{{ $hoat_dong->title }}</h2>
                                     <p class="txt-black-2 m-0 pb-2">
