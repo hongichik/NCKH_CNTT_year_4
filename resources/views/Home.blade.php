@@ -373,104 +373,50 @@
             </div>
             <div class="pt-1 px-0 col-md-5 col-12 d-flex flex-column">
                 <div class="d-flex flex-column shadow p-2 rounded">
-                    <h1 class="txt-blue-2">Các sự kiện</h1>
+                    <h1 class="txt-blue-2">Sự kiện sắp diễn ra</h1>
                     <div class="d-flex flex-column">
                         <div class="d-flex flex-wrap">
-                            <a href="#" class="pb-2 px-2 col-12">
-                                <img src="img/tintuc1.jpg" alt="" class="p-0 m-0 w-100 shadow rounded"
-                                    style="aspect-ratio: 2/1; object-fit: cover" />
+                            <a href="{{ env('APP_URL') . $Events[0]->url_post }}" class="pb-2 px-2 col-12">
+                                <img src="{{ asset('storage\\') . $Events[0]->image }}" alt=""
+                                    class="p-0 m-0 w-100 shadow rounded" style="aspect-ratio: 2/1; object-fit: cover" />
                             </a>
                         </div>
                     </div>
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-wrap">
-                            <div class="pb-2 px-2">
-                                <div class="d-flex flex-column border rounded shadow">
-                                    <p style="
+
+                    @foreach ($Events as $Event)
+                        <div class="d-flex flex-column">
+                            <div class="d-flex flex-wrap">
+                                <div class="pb-2 px-2">
+                                    <div class="d-flex flex-column border rounded shadow">
+                                        <p style="
 												background-color: #ffed89;
 												font-weight: bold;
 												font-size: 0.5rem;
 												border-bottom: 0.05rem solid rgb(150, 150, 150);
 												color: var(--blue-coler-2);
 											"
-                                        class="px-1 py-0 m-auto">
-                                        Tháng 1
-                                    </p>
-                                    <p style="font-size: 1rem; background-color: #ff3434; color: white"
-                                        class="rounded-bottom text-center m-0 font-weight-bold">
-                                        27
-                                    </p>
+                                            class="px-1 py-0 m-auto">
+                                            Tháng {{ $Event->created_at->format('m') }}
+                                        </p>
+                                        <p style="font-size: 1rem; background-color: #ff3434; color: white"
+                                            class="rounded-bottom text-center m-0 font-weight-bold">
+                                            {{ $Event->created_at->format('d') }}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-column col-8 col-md-8 p-0">
+                                    <h3 class="txt-blue-2 d-flex">
+                                        <a class="mt-1" href="{{ env('APP_URL') . $Event->url_post }}">{{ $Event->title }}</a>
+                                    </h3>
                                 </div>
                             </div>
-
-                            <div class="d-flex flex-column col-8 col-md-8 p-0">
-                                <h3 class="txt-blue-2 d-flex">
-                                    <a class="mt-1" href="">Tiêu đềềTiêu đềTiêu đềTiêu đ</a>
-                                </h3>
-                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-wrap">
-                            <div class="pb-2 px-2">
-                                <div class="d-flex flex-column border rounded shadow">
-                                    <p style="
-												background-color: #ffed89;
-												font-weight: bold;
-												font-size: 0.5rem;
-												border-bottom: 0.05rem solid rgb(150, 150, 150);
-												color: var(--blue-coler-2);
-											"
-                                        class="px-1 py-0 m-auto">
-                                        Tháng 1
-                                    </p>
-                                    <p style="font-size: 1rem; background-color: #ff3434; color: white"
-                                        class="rounded-bottom text-center m-0 font-weight-bold">
-                                        27
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column col-8 col-md-8 p-0">
-                                <h3 class="txt-blue-2 d-flex">
-                                    <a class="mt-1" href="">Tiêu đềềTiêu đềTiêu đềTiêu đ</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="d-flex flex-column">
-                        <div class="d-flex flex-wrap">
-                            <div class="pb-2 px-2">
-                                <div class="d-flex flex-column border rounded shadow">
-                                    <p style="
-												background-color: #ffed89;
-												font-weight: bold;
-												font-size: 0.5rem;
-												border-bottom: 0.05rem solid rgb(150, 150, 150);
-												color: var(--blue-coler-2);
-											"
-                                        class="px-1 py-0 m-auto">
-                                        Tháng 1
-                                    </p>
-                                    <p style="font-size: 1rem; background-color: #ff3434; color: white"
-                                        class="rounded-bottom text-center m-0 font-weight-bold">
-                                        27
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="d-flex flex-column col-8 col-md-8 p-0">
-                                <h3 class="txt-blue-2 d-flex">
-                                    <a class="mt-1" href="">Tiêu đềềTiêu đềTiêu đềTiêu đ</a>
-                                </h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-center pb-2">
+                    {{-- <div class="d-flex justify-content-center pb-2">
                         <a href="">xem tất cả</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
