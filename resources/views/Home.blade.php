@@ -6,16 +6,16 @@
 
     <meta property="og:title" content="{{ setting('home.title') }}" />
     <meta property="og:description" content="{{ setting('home.description') }} " />
-    <meta property="og:url" content="{{ env('APP_URL').$_SERVER['REQUEST_URI'] }}" />
+    <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
     <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta property="og:home_name" content="{{ setting('home.title') }}" />
     <meta name="twitter:title" content="{{ setting('home.title') }}" />
     <meta name="twitter:description" content="{{ setting('home.description') }} " />
-    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/',setting('home.logo_Menu')) }}" />
+    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta name="title" content="{{ setting('home.title') }}" />
     <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta property="og:image:secure_url"
-        content="{{ asset('storage') . '/' . str_replace('\\', '/',setting('home.logo_Menu')) }}" />
+        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta name="theme-color" content="#0086cd" />
 
     <title>{{ setting('home.title') }}</title>
@@ -213,19 +213,21 @@
             <div class="d-flex flex-wrap">
                 <div class="col-md-6 col-12 d-flex"
                     style="
-							background-image: linear-gradient(#0000002e, #0000002e), url(img/tintuc1.jpg);
+							background-image: url('{{ asset('storage') . '/' . str_replace('\\', '/', setting('dao-tao.bg_dt_1')) }}');
 							height: 25rem;
 							width: 100%;
 							background-position: center;
 							background-repeat: no-repeat;
 							background-size: cover;
 						">
-                    <a href="#" style="width: 15rem; height: 6rem; background-color: #0086cdc2"
+                    <a href="{{ env('APP_URL') . setting('dao-tao.url_1') }}"
+                        style="width: 15rem; height: 6rem; background-color: #0086cdc2"
                         class="d-flex flex-column m-auto rounded shadow-lg">
                         <div class="m-auto">
-                            <h2 class="font-weight-bold txt-gray-1">Khoa học máy tính</h2>
+                            <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
+                                {{ setting('dao-tao.title_1') }}</h2>
                             <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
-                                nội dung nội dung
+                                {{ setting('dao-tao.description_1') }}
                             </p>
                         </div>
                     </a>
@@ -233,34 +235,38 @@
                 <div class="col-md-6 col-12 d-flex flex-column p-0">
                     <div class="d-flex w-100 h-50"
                         style="
-								background-image: url(img/tintuc1.jpg);
+								background-image: url('{{ asset('storage') . '/' . str_replace('\\', '/', setting('dao-tao.bg_dt_2')) }}');
 								background-position: center;
 								background-repeat: no-repeat;
 								background-size: cover;
 							">
-                        <a href="" style="width: 15rem; height: 6rem; background-color: #0086cdc2"
+                        <a href="{{ env('APP_URL') . setting('dao-tao.url_2') }}"
+                            style="width: 15rem; height: 6rem; background-color: #0086cdc2"
                             class="d-flex flex-column m-auto rounded shadow-lg">
                             <div class="m-auto">
-                                <h2 class="font-weight-bold txt-gray-1">Khoa học máy tính</h2>
+                                <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
+                                    {{ setting('dao-tao.title_2') }}</h2>
                                 <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
-                                    nội dung nội dung
+                                    {{ setting('dao-tao.description_1') }}
                                 </p>
                             </div>
                         </a>
                     </div>
                     <div class="d-flex w-100 h-50"
                         style="
-								background-image: url(img/tintuc1.jpg);
+								background-image: url('{{ asset('storage') . '/' . str_replace('\\', '/', setting('dao-tao.bg_dt_3')) }}');
 								background-position: center;
 								background-repeat: no-repeat;
 								background-size: cover;
 							">
-                        <a href="" style="width: 15rem; height: 6rem; background-color: #0086cdc2"
+                        <a href="{{ env('APP_URL') . setting('dao-tao.url_2') }}"
+                            style="width: 15rem; height: 6rem; background-color: #0086cdc2"
                             class="d-flex flex-column m-auto rounded shadow-lg">
                             <div class="m-auto">
-                                <h2 class="font-weight-bold txt-gray-1">Khoa học máy tính</h2>
+                                <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
+                                    {{ setting('dao-tao.title_3') }}</h2>
                                 <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
-                                    nội dung nội dung
+                                    {{ setting('dao-tao.description_1') }}
                                 </p>
                             </div>
                         </a>
@@ -280,70 +286,31 @@
             <h1 class="txt-blue-3 text-center pt-3">Thông tin tuyển sinh</h1>
             <div class="underlined_div"></div>
             <div class="mt-3 d-flex flex-wrap">
-                <div class="col-12 col-md-4 px-1 px-lg-3 pt-2">
-                    <div class="card w-100 h-100 shadow" style="background-color: #fff">
-                        <img src="img/tintuc1.jpg" class="card-img-top" alt="..."
-                            style="aspect-ratio: 3/2; object-fit: cover" />
-                        <a href="" class="card-body pt-1">
-                            <h2 class="txt-blue-2 my-auto pt-1"
-                                style="
+                @foreach ($tuyen_sinhs as $tuyen_sinh)
+                    <div class="col-12 col-md-4 px-1 px-lg-3 pt-2">
+                        <div class="card w-100 h-100 shadow" style="background-color: #fff">
+                            <img src="{{ asset('storage') . '/' . str_replace('\\', '/', $tuyen_sinh->image) }}"
+                                class="card-img-top" alt="{{ $tuyen_sinh->title }}"
+                                style="aspect-ratio: 3/2; object-fit: cover" />
+                            <a href="{{ asset('post') . '/' . setting('home.tuyen_sinh') . '/' . $tuyen_sinh->slug }}"
+                                class="card-body pt-1">
+                                <h2 class="txt-blue-2 my-auto pt-1"
+                                    style="
 										height: 2.5rem;
 										font-weight: 600;
 										color: var(--blue-coler-3);
 										font-size: 0.7rem;
 									">
-                                Tuyển sinh Đại học 2022 song bằng việt pháp
-                            </h2>
-                            <p class="card-text" style="font-size: 0.65rem; color: black">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
-                            </p>
-                        </a>
+                                    {{ $tuyen_sinh->title }}
+                                </h2>
+                                <p class="card-text" style="font-size: 0.65rem; color: black">
+                                    {{ $tuyen_sinh->meta_description }}
+                                </p>
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-12 col-md-4 px-1 px-lg-3 pt-2">
-                    <div class="card w-100 h-100 shadow" style="background-color: #fff">
-                        <img src="img/tintuc1.jpg" class="card-img-top" alt="..."
-                            style="aspect-ratio: 3/2; object-fit: cover" />
-                        <a href="" class="card-body pt-1">
-                            <h2 class="txt-blue-2 my-auto pt-1"
-                                style="
-										height: 2.5rem;
-										font-weight: 600;
-										color: var(--blue-coler-3);
-										font-size: 0.7rem;
-									">
-                                Tuyển sinh Đại học 2022
-                            </h2>
-                            <p class="card-text" style="font-size: 0.65rem; color: black">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 px-1 px-lg-3 pt-2">
-                    <div class="card w-100 h-100 shadow" style="background-color: #fff">
-                        <img src="img/tintuc1.jpg" class="card-img-top" alt="..."
-                            style="aspect-ratio: 3/2; object-fit: cover" />
-                        <a href="" class="card-body pt-1">
-                            <h2 class="txt-blue-2 my-auto pt-1"
-                                style="
-										height: 2.5rem;
-										font-weight: 600;
-										color: var(--blue-coler-3);
-										font-size: 0.7rem;
-									">
-                                Tuyển sinh Đại học 2022
-                            </h2>
-                            <p class="card-text" style="font-size: 0.65rem; color: black">
-                                Some quick example text to build on the card title and make up the bulk of the
-                                card's content.
-                            </p>
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
     </nav>
@@ -363,46 +330,35 @@
 
                 <div id="hoatdong" class="carousel slide pr-3 pl-1" data-ride="carousel" data-interval="2000"
                     data-pause="true">
-                    <ol class="carousel-indicators m-0">
-                        <li data-target="#hoatdong" data-slide-to="0" class="active"
-                            style="background-color: var(--blue-coler-1)"></li>
-                        <li data-target="#hoatdong" data-slide-to="1" style="background-color: var(--blue-coler-1)"></li>
-                        <li data-target="#hoatdong" data-slide-to="2" style="background-color: var(--blue-coler-1)"></li>
+                    <ol class="carousel-indicators">
+                        @foreach ($hoat_dongs as $key => $hoat_dong)
+                            @if ($key == 0)
+                                <li data-target="#hoatdong" data-slide-to="0" class="active"
+                                    style="background-color: var(--blue-coler-1)"></li>
+                            @else
+                                <li data-target="#hoatdong" data-slide-to="{{ $key }}"
+                                    style="background-color: var(--blue-coler-1)"></li>
+                            @endif
+                        @endforeach
+
                     </ol>
                     <div class="carousel-inner">
-                        <a href="#" class="carousel-item shadow active">
-                            <div class="d-flex flex-column">
-                                <img src="img/tintuc1.jpg" alt="" class="p-0 m-0 w-100 rounded"
-                                    style="aspect-ratio: 3/2; object-fit: cover" />
-                                <h2 class="txt-blue-2 pt-2">Tiêu đề</h2>
-                                <p class="txt-black-2 m-0 pb-2">
-                                    Nội dung nội dung nội dung Nội dung nội dung nội dung Nội dung nội dung nội dung
-                                </p>
-                                <span class="span_time pb-2">28/09/2020 14:19:00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-item shadow">
-                            <div class="d-flex flex-column">
-                                <img src="img/tintuc2.jpg" alt="" class="p-0 m-0 w-100 rounded"
-                                    style="aspect-ratio: 3/2; object-fit: cover" />
-                                <h2 class="txt-blue-2 pt-2">Tiêu đề</h2>
-                                <p class="txt-black-2 m-0 pb-2">
-                                    Nội dung nội dung nội dung Nội dung nội dung nội dung Nội dung nội dung nội dung
-                                </p>
-                                <span class="span_time pb-2">28/09/2020 14:19:00</span>
-                            </div>
-                        </a>
-                        <a href="#" class="carousel-item shadow">
-                            <div class="d-flex flex-column">
-                                <img src="img/tintuc1.jpg" alt="" class="p-0 m-0 w-100 rounded"
-                                    style="aspect-ratio: 3/2; object-fit: cover" />
-                                <h2 class="txt-blue-2 pt-2">Tiêu đề</h2>
-                                <p class="txt-black-2 m-0 pb-2">
-                                    Nội dung nội dung nội dung Nội dung nội dung nội dung Nội dung nội dung nội dung
-                                </p>
-                                <span class="span_time pb-2">28/09/2020 14:19:00</span>
-                            </div>
-                        </a>
+                        @foreach ($hoat_dongs as $key => $hoat_dong)
+                            <a href="{{ $hoat_dong->url_post }}"
+                                class="carousel-item shadow 
+                                @if ($key == 0) active @endif
+                                ">
+                                <div class="d-flex flex-column">
+                                    <img src="{{ asset('storage\\') }}{{ $hoat_dong->image }}" alt="{{ $hoat_dong->description }}" class="p-0 m-0 w-100 rounded"
+                                        style="aspect-ratio: 3/2; object-fit: cover" />
+                                    <h2 class="txt-blue-2 pt-2">{{ $hoat_dong->title }}</h2>
+                                    <p class="txt-black-2 m-0 pb-2">
+                                        {{ $hoat_dong->description }}
+                                    </p>
+                                    <span class="span_time pb-2">{{ $hoat_dong->created_at }}</span>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
                     <button class="carousel-control-prev" type="button" data-target="#hoatdong" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
