@@ -38,7 +38,7 @@
     <nav class="d-flex container-fluid px-3 px-xl-5 flex-column" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex flex-wrap container-fluid px-0 pb-4">
             <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-column rounded shadow px-3">
-                <h1 class="pt-3" style="color: var(--blue-coler-3)">
+                <h1 class="pt-3" style="color: var(--blue-coler-3); font-size: 0.7rem">
                     {{ $post->title }}
                 </h1>
                 <div class="d-flex">
