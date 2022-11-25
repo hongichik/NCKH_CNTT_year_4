@@ -90,7 +90,7 @@
     <div class="navbar_header">
         <nav class="container-fluid px-3 px-xl-5 px-lg-1 d-flex justify-content-between p-0 navbar navbar-expand-lg"
             style="font-size: 0.6rem">
-            <div class="d-lg-none d-flex justify-content-between w-100 py-2">
+            <div class="d-lg-none d-flex justify-content-between w-100 py-1">
                 <div class="d-lg-none d-flex">
                     <img src="{{ asset('storage\\') . setting('home.logo_Menu') }}"
                         alt="icon
