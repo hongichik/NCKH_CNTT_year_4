@@ -5,26 +5,8 @@
             background-repeat: no-repeat;
             background-size: 100%;
         ">
-        <div class="d-flex pt-2 pr-2 justify-content-end pt-1 container-fluid px-3 px-xl-5">
-            <div class="d-flex">
-                <img src="{{ asset('asset/img/icon/icon_email.png') }}" class="pr-1 pl-3"
-                    alt="icon
-                    liên hệ
-                    Đại học hạ long" style="height: 0.8rem" />
-                <p class="mt-auto mb-auto" style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
-                    Gmail: {{ setting('home.gmail') }}
-                </p>
-                <img src="{{ asset('asset/img/icon/icon_phone.png') }}" class="pr-1 pl-3"
-                    alt="icon
-                    liên hệ
-                    Đại học hạ long" style="height: 0.8rem" />
-                <p class="mt-auto mb-auto" style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
-                    Hotline : {{ setting('home.phone_number') }}
-                </p>
-            </div>
-        </div>
-        <div class="d-md-flex d-none header-between">
-            <div class="container-fluid px-3 px-xl-5 d-flex align-items-center justify-content-between">
+        <div class="d-md-flex d-none header-between container-fluid px-3 px-xl-5 justify-content-between py-2">
+            <div class="d-flex align-items-center justify-content-between">
                 <div class="d-flex">
                     <img src="{{ asset('storage\\') . setting('home.logo_Menu') }}"
                         alt="icon
@@ -43,92 +25,26 @@
                 </div>
                 <div></div>
             </div>
-        </div>
-        <div class="d-flex justify-content-center">
-            <div class="container-fluid px-3 px-xl-5 d-flex justify-content-between">
-                <div></div>
-                <div class="d-flex justify-content-end" style="position: relative">
-                    <ul class="d-flex m-0" style="list-style: none">
-                        <li class="px-2 d-flex">
-                            <a href="#" class="m-auto">
-                                <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}" alt="icon việt nam"
-                                    style="height: 1.2rem" />
-                            </a>
-                        </li>
-                        <li class="d-flex">
-                            <a href="#" class="m-auto">
-                                <img src="{{ asset('asset/img/icon/icons8-great-britain-96.png') }}" alt="icon việt nam"
-                                    style="height: 1.2rem" />
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="d-flex ml-2 mr-1">
-                        <div class="m-auto" style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)">
-                        </div>
-                    </div>
-
-                    <button type="button" class="show_form_search form_search_button_hover">
-                        <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
-                            alt="icon-search" />
-                    </button>
-                    <div class="form_search ml-2 rounded">
-                        <input type="text" class="form_search_term" placeholder="Bạn muốn tìm kiếm gì?" />
-                        <button type="submit" class="form_search_button">
-                            <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
-                                alt="icon-search" />
-                        </button>
-                        <button type="button" id="" class="close_form_search form_search_button_hover">
-                            <img src="{{ asset('asset/img/icon/icon_close.svg') }}" style="height: 1.25rem"
-                                alt="icon-search" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <div class="d-md-flex d-none header-between container-fluid px-3 px-xl-5 justify-content-between py-2">
-            <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex">
-                    <img src="img/Logo-Dai-Hoc-Ha-Long-UHL-V.png"
-                        alt="icon
-                                Đại học hạ long" style="height: 3rem" />
-                    <div class="ml-2 mr-2" style="width: 0.05rem; background-color: var(--blue-coler-1)"></div>
-                    <p class="mt-auto mb-auto"
-                        style="
-									font-size: 1rem;
-									text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
-										-1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
-									font-weight: bold;
-									color: var(--blue-coler-3);
-								">
-                        KHOA CÔNG NGHỆ THÔNG TIN <br />TRƯỜNG ĐẠI HỌC HẠ LONG
-                    </p>
-                </div>
-            </div>
             <div class="d-flex flex-column">
                 <div class="d-flex pt-2 pr-2 justify-content-end pt-1">
                     <div class="d-flex">
-                        <img src="img/icon/icon_email.png" class="pr-1 pl-3"
+                        <img src="{{ asset('asset/img/icon/icon_email.png') }}" class="pr-1 pl-3"
                             alt="icon
-                            liên hệ
-                            Đại học hạ long"
+                    liên hệ
+                    Đại học hạ long"
                             style="height: 0.8rem" />
                         <p class="mt-auto mb-auto"
                             style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
-                            Gmail: congnghethongtin@gmail.com
+                            Gmail: {{ setting('home.gmail') }}
                         </p>
-                        <img src="img/icon/icon_phone.png" class="pr-1 pl-3"
+                        <img src="{{ asset('asset/img/icon/icon_phone.png') }}" class="pr-1 pl-3"
                             alt="icon
-                            liên hệ
-                            Đại học hạ long"
+                    liên hệ
+                    Đại học hạ long"
                             style="height: 0.8rem" />
                         <p class="mt-auto mb-auto"
                             style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
-                            Hotline : 0912345678
+                            Hotline : {{ setting('home.phone_number') }}
                         </p>
                     </div>
                 </div>
@@ -138,33 +54,38 @@
                         <div class="d-flex justify-content-end" style="position: relative">
                             <ul class="d-flex m-0" style="list-style: none">
                                 <li class="px-2 d-flex">
-                                    <a href="" class="m-auto">
-                                        <img src="img/icon/icons8-vietnam-96.png" alt="icon việt nam"
-                                            style="height: 1.2rem" />
+                                    <a href="#" class="m-auto">
+                                        <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
+                                            alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
                                 </li>
                                 <li class="d-flex">
-                                    <a href="" class="m-auto">
-                                        <img src="img/icon/icons8-great-britain-96.png" alt="icon việt nam"
-                                            style="height: 1.2rem" />
+                                    <a href="#" class="m-auto">
+                                        <img src="{{ asset('asset/img/icon/icons8-great-britain-96.png') }}"
+                                            alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
                                 </li>
                             </ul>
                             <div class="d-flex ml-2 mr-1">
                                 <div class="m-auto"
-                                    style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)"></div>
+                                    style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)">
+                                </div>
                             </div>
 
-                            <button type="button" class="form_search_button_hover show_form_search">
-                                <img src="img/icon/icons8-search.svg" style="height: 1rem" alt="icon-search" />
+                            <button type="button" class="show_form_search form_search_button_hover">
+                                <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
+                                    alt="icon-search" />
                             </button>
                             <div class="form_search ml-2 rounded">
                                 <input type="text" class="form_search_term" placeholder="Bạn muốn tìm kiếm gì?" />
                                 <button type="submit" class="form_search_button">
-                                    <img src="img/icon/icons8-search.svg" style="height: 1rem" alt="icon-search" />
+                                    <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
+                                        alt="icon-search" />
                                 </button>
-                                <button type="button" class="close_form_search form_search_button_hover">
-                                    <img src="img/icon/icon_close.svg" style="height: 1.25rem" alt="icon-search" />
+                                <button type="button" id=""
+                                    class="close_form_search form_search_button_hover">
+                                    <img src="{{ asset('asset/img/icon/icon_close.svg') }}" style="height: 1.25rem"
+                                        alt="icon-search" />
                                 </button>
                             </div>
                         </div>
@@ -172,6 +93,11 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
     </div>
 
     <div class="navbar_header">
