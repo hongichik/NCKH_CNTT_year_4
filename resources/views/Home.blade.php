@@ -102,6 +102,12 @@
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active show" id="profile"
                                     style="max-height: 16rem; overflow-y: scroll">
+                                    <style>
+                                        /* width */
+                                        .tab-pane::-webkit-scrollbar {
+                                            width: 0px;
+                                        }
+                                    </style>
                                     <div class="d-flex flex-column pt-1">
                                         <ul class="m-0 p-0">
                                             @foreach ($new_1->PostMany as $new)
@@ -407,7 +413,8 @@
 
                                 <div class="d-flex flex-column col-8 col-md-8 p-0">
                                     <h3 class="txt-blue-2 d-flex">
-                                        <a class="mt-1" href="{{ env('APP_URL') . $Event->url_post }}">{{ $Event->title }}</a>
+                                        <a class="mt-1"
+                                            href="{{ env('APP_URL') . $Event->url_post }}">{{ $Event->title }}</a>
                                     </h3>
                                 </div>
                             </div>
