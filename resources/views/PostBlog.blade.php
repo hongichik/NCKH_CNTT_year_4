@@ -44,7 +44,7 @@
                 <div class="d-flex">
                     <span class="span_time">{{ $post->created_at }}</span>
                 </div>
-                <div class="d-block pt-4" style="font-size: 0.65rem; word-wrap: break-word">
+                <div class="d-block pt-4" style="font-size: 0.65rem; word-wrap: break-word;overflow: scroll;">
                     {!! $post->body !!}
                 </div>
             </div>
