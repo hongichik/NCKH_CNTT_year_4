@@ -96,7 +96,7 @@
                         alt="icon
                         Đại học hạ long" style="height: 1.9rem" />
                     <div class="ml-2 mr-2" style="width: 0.05rem; background-color: var(--blue-coler-1)"></div>
-                    <p class="mt-auto mb-auto" style="font-size: 0.4rem; font-weight: 900; color: var(--blue-coler-3)">
+                    <p class="mt-auto mb-auto" style="font-size: 0.53rem; font-weight: 900; color: var(--blue-coler-3)">
                         {!! setting('home.name_logo') !!}
                     </p>
                 </div>
