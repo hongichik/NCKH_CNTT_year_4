@@ -44,28 +44,7 @@
                 <div class="d-flex">
                     <span class="span_time">{{ $post->created_at }}</span>
                 </div>
-                <div class="d-block pt-3" style="font-size: 0.65rem; word-wrap: break-word;overflow: scroll;">
-                    <style>
-                        /* width */
-                        ::-webkit-scrollbar {
-                            width: 1px;
-                        }
-
-                        /* Track */
-                        ::-webkit-scrollbar-track {
-                            background: #f1f1f1;
-                        }
-
-                        /* Handle */
-                        ::-webkit-scrollbar-thumb {
-                            background: #888;
-                        }
-
-                        /* Handle on hover */
-                        ::-webkit-scrollbar-thumb:hover {
-                            background: #555;
-                        }
-                    </style>
+                <div class="d-block pt-3 pb-3 content_post" style="font-size: 0.65rem; word-wrap: break-word;overflow-x: scroll;">
                     {!! $post->body !!}
                 </div>
             </div>
