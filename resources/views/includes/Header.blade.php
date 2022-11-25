@@ -50,13 +50,13 @@
                 <div class="d-flex justify-content-end" style="position: relative">
                     <ul class="d-flex m-0" style="list-style: none">
                         <li class="px-2 d-flex">
-                            <a href="" class="m-auto">
+                            <a href="#" class="m-auto">
                                 <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}" alt="icon việt nam"
                                     style="height: 1.2rem" />
                             </a>
                         </li>
                         <li class="d-flex">
-                            <a href="" class="m-auto">
+                            <a href="#" class="m-auto">
                                 <img src="{{ asset('asset/img/icon/icons8-great-britain-96.png') }}" alt="icon việt nam"
                                     style="height: 1.2rem" />
                             </a>
@@ -105,13 +105,13 @@
                         <div class="d-none d-sm-flex justify-content-end" style="position: relative">
                             <ul class="d-flex m-0" style="list-style: none">
                                 <li class="px-2 d-flex">
-                                    <a href="" class="m-auto">
+                                    <a href="#" class="m-auto">
                                         <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
                                             alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
                                 </li>
                                 <li class="d-flex">
-                                    <a href="" class="m-auto">
+                                    <a href="#" class="m-auto">
                                         <img src="{{ asset('asset/img/icon/icons8-great-britain-96.png') }}"
                                             alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
@@ -155,13 +155,13 @@
                     <div class="d-flex d-sm-none justify-content-end" style="position: relative">
                         <ul class="d-flex m-0" style="list-style: none">
                             <li class="px-2 d-flex">
-                                <a href="" class="m-auto">
+                                <a href="#" class="m-auto">
                                     <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
                                         alt="icon việt nam" style="height: 1.2rem" />
                                 </a>
                             </li>
                             <li class="d-flex">
-                                <a href="" class="m-auto">
+                                <a href="#" class="m-auto">
                                     <img src="{{ asset('asset/img/icon/icons8-great-britain-96.png') }}"
                                         alt="icon việt nam" style="height: 1.2rem" />
                                 </a>
@@ -192,7 +192,7 @@
                     {{ menu('user_home', 'includes.MenuUser') }}
 
                 </ul>
-                <div class="d-flex">
+                <div class="d-flex justify-content-end">
                     <div class="m-0 d-none d-lg-block" style="width: 0.05rem; background-color: var(--blue-coler-1)">
                     </div>
                     @if (!Auth::check())
