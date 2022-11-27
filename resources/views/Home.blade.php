@@ -239,7 +239,7 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-12 d-flex flex-column p-0">
-                    <div class="d-flex w-100 h-50"
+                    <div class="d-flex w-100 h-50 p-3"
                         style="
 								background-image: url('{{ asset('storage') . '/' . str_replace('\\', '/', setting('dao-tao.bg_dt_2')) }}');
 								background-position: center;
@@ -258,7 +258,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="d-flex w-100 h-50"
+                    <div class="d-flex w-100 h-50 p-3"
                         style="
 								background-image: url('{{ asset('storage') . '/' . str_replace('\\', '/', setting('dao-tao.bg_dt_3')) }}');
 								background-position: center;
