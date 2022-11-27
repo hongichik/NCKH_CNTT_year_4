@@ -52,7 +52,7 @@ class PostController extends Controller
         if ($category == null) {
             return redirect()->route('home');
         }
-        $comment = Comment::where('post_id', $post->id)->where('parent_id', null)->get();
+        $comment = Comment::where('post_id', $post->id)->where('parent_id', null)->orderBy('id', 'DESC')->get();
         return view('PostBlog')->with([
             "nameCategory" => $category->name,
             "urlCategory" => $slugCategory,

@@ -1,51 +1,74 @@
 @extends('templates.default')
-
+@php
+    if (isset($post)) {
+        $meta_description = $post->meta_description;
+        $seo_title = $post->seo_title;
+        $title = $post->title;
+        $meta_img = $post->image;
+        $created_at = $post->created_at;
+        $body = $post->body;
+        $star_count = $post->star->count();
+        $star_avg = $post->star->avg('star');
+    } elseif (isset($blog)) {
+        $meta_description = $blog->description;
+        $seo_title = $blog->title;
+        $title = $blog->title;
+        $meta_img = $blog->image;
+        $created_at = $blog->created_at;
+        $body = $blog->body;
+        $star_count = $blog->star->count();
+        $star_avg = $blog->star->avg('star');
+    }
+@endphp
 @section('SeoConent')
-    <meta name="description" content="{{ $post->meta_description }}" />
-    <meta name="keywords" content="{{ $post->seo_title }}" />
-    <meta property="og:title" content="{{ $post->title }}" />
-    <meta property="og:description" content="{{ $post->meta_description }} " />
+    <meta name="description" content="{{ $meta_description }}" />
+    <meta name="keywords" content="{{ $seo_title }}" />
+    <meta property="og:title" content="{{ $title }}" />
+    <meta property="og:description" content="{{ $meta_description }} " />
     <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
-    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
-    <meta property="og:home_name" content="{{ $post->title }}" />
-    <meta name="twitter:title" content="{{ $post->title }}" />
-    <meta name="twitter:description" content="{{ $post->meta_description }} " />
-    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
-    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
-    <meta property="og:image:secure_url" content="{{ asset('storage') . '/' . str_replace('\\', '/', $post->image) }}" />
+    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $meta_img) }}" />
+    <meta property="og:home_name" content="{{ $title }}" />
+    <meta name="twitter:title" content="{{ $title }}" />
+    <meta name="twitter:description" content="{{ $meta_description }} " />
+    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', $meta_img) }}" />
+    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', $meta_img) }}" />
+    <meta property="og:image:secure_url" content="{{ asset('storage') . '/' . str_replace('\\', '/', $meta_img) }}" />
     <meta name="theme-color" content="#0086cd" />
 
-    <title>{{ $post->title }}</title>
+    <title>{{ $title }}</title>
 @endsection
 
 @section('content')
     <nav class="d-flex flex-column py-3" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex container-fluid px-3 px-xl-5 flex-column">
-            <nav aria-label="breadcrumb" class="">
-                <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
-                    <li class="breadcrumb-item"><a href="{{ asset('') }}">Trang chủ</a></li>
-                    @if (isset($post))
-                        <li class="breadcrumb-item"><a
-                                href="{{ asset('post') . '/' . $urlCategory }}">{{ $nameCategory }}</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $post->title }}</li>
-                    @endif
-
-                </ol>
-            </nav>
+            @if (isset($post))
+                @include('includes.breadcrumb', [
+                    'url_category' => '/' . 'post/' . $urlCategory,
+                    'slug_category' => $nameCategory,
+                    'slug_active' => $title,
+                ])
+            @endif
+            @if (isset($blog))
+                @include('includes.breadcrumb', [
+                    'url_category' => '/' . 'blog',
+                    'slug_category' => 'Blog sinh viên',
+                    'slug_active' => $title,
+                ])
+            @endif
         </div>
     </nav>
     <nav class="d-flex container-fluid px-3 px-xl-5 flex-column" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex flex-wrap container-fluid px-0 pb-4">
             <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-column rounded shadow px-3">
                 <h1 class="pt-3" style="color: var(--blue-coler-3); font-size: 0.8rem">
-                    {{ $post->title }}
+                    {{ $title }}
                 </h1>
                 <div class="d-flex">
-                    <span class="span_time">{{ $post->created_at }}</span>
+                    <span class="span_time">{{ $created_at }}</span>
                 </div>
-                <div class="d-block pt-3 pb-3 content_post" style="font-size: 0.65rem; word-wrap: break-word;overflow-x: scroll;">
-                    {!! $post->body !!}
+                <div class="d-block pt-3 pb-3 content_post"
+                    style="font-size: 0.65rem; word-wrap: break-word;overflow-x: scroll;">
+                    {!! $body !!}
                 </div>
             </div>
 
@@ -90,9 +113,9 @@
         <div class="navbar-nav mr-auto pl-2 pt-2  px-0 w-100">
             <h2 style="color: var(--blue-coler-3)">Đánh giá</h2>
             <div class="d-flex pl-3">
-                <p class="my-auto pt-1 pr-1">{{ $post->star->count() }} lượt đánh giá,
-                    @if ($post->star->avg('star'))
-                        {{ $post->star->avg('star') }}
+                <p class="my-auto pt-1 pr-1">{{ $star_count }} lượt đánh giá,
+                    @if ($star_avg)
+                        {{ $star_avg }}
                     @else
                         5
                     @endif

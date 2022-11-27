@@ -23,7 +23,8 @@ class CommentController extends Controller
         $comment->body = $request->body;
         $comment->parent_id = $request->commentId;
         $comment->page_id = $request->page_id;
-        $comment->post_id = $request->post_id;      
+        $comment->post_id = $request->post_id;  
+        $comment->blog_id = $request->blog_id;    
         $comment->save();
         return redirect()->back()->withInput();
     }

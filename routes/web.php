@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\CommentController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,9 @@ Route::post('postComment', [CommentController::class, 'postComment']);
 
 Route::get('post/{slugCategory}', [PostController::class, 'index']);
 Route::get('post/{slugCategory}/{slugPost}', [PostController::class, 'post'])->name('post');
+
+Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/{blogSlug}', [BlogController::class, 'blog']);
 
 Route::post('star', [StarContrllor::class, 'index'])->name('star');
 

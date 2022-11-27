@@ -22,12 +22,7 @@
 @section('content')
     <nav class="d-flex flex-column py-3" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex container-fluid px-3 px-xl-5 flex-column">
-            <nav aria-label="breadcrumb" class="">
-                <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
-                    <li class="breadcrumb-item"><a href="{{ asset('') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $page->slug }}</li>
-                </ol>
-            </nav>
+            @include('includes.breadcrumb',['slug_active'=> $page->title])
             <h1 class="pt-3" style="color: var(--blue-coler-3)">
                 {{ $page->title }}
             </h1>
@@ -59,6 +54,3 @@
     </nav>
 @endsection
 
-@section('addFileFooter')
-    <script src="{{ asset('asset/js/form.js') }}"></script>
-@endsection

@@ -232,7 +232,7 @@
                         <div class="m-auto">
                             <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
                                 {{ setting('dao-tao.title_1') }}</h2>
-                            <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
+                            <p class="m-0 txt-gray-1 text-justify px-2" style="font-size: 0.65rem">
                                 {{ setting('dao-tao.description_1') }}
                             </p>
                         </div>
@@ -252,7 +252,7 @@
                             <div class="m-auto">
                                 <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
                                     {{ setting('dao-tao.title_2') }}</h2>
-                                <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
+                                <p class="m-0 txt-gray-1 text-justify px-2" style="font-size: 0.65rem">
                                     {{ setting('dao-tao.description_2') }}
                                 </p>
                             </div>
@@ -271,7 +271,7 @@
                             <div class="m-auto">
                                 <h2 class="font-weight-bold txt-gray-1" style="text-align: center;">
                                     {{ setting('dao-tao.title_3') }}</h2>
-                                <p class="m-0 txt-gray-1 text-center" style="font-size: 0.65rem">
+                                <p class="m-0 txt-gray-1 text-justify px-2" style="font-size: 0.65rem">
                                     {{ setting('dao-tao.description_3') }}
                                 </p>
                             </div>
@@ -309,7 +309,7 @@
 									">
                                     {{ $tuyen_sinh->title }}
                                 </h2>
-                                <p class="card-text" style="font-size: 0.65rem; color: black">
+                                <p class="card-text text-justify" style="font-size: 0.65rem; color: black">
                                     {{ $tuyen_sinh->meta_description }}
                                 </p>
                             </a>

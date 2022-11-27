@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $visible = ['user_id', 'body', 'parent_id', 'page_id', 'post_id'];
+    protected $visible = ['user_id', 'body', 'parent_id', 'page_id', 'post_id','blog_id'];
     public function ChillId()
     {
-        return $this->hasMany(Comment::class,'parent_id', 'id');
+        return $this->hasMany(Comment::class,'parent_id', 'id')->orderBy('id', 'DESC');
     }
 
     public function user()

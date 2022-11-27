@@ -1,27 +1,40 @@
 @extends('templates.default')
 
+@php
+    
+    if (isset($post)) {
+        $titlePage = $nameCategory;
+        $url = asset('post') . '/' . $urlCategory . '/';
+    }
+    elseif(isset($blog)) {
+        $titlePage = $nameCategory;
+        $posts = $blogs;
+        $url = asset('blog') . '/';
+    }
+@endphp
 @section('SeoConent')
     <meta name="description" content="{{ setting('home.description') }}" />
-    <meta name="keywords" content="{{ setting('home.keyword') }}, {{ $nameCategory }}" />
+    <meta name="keywords" content="{{ setting('home.keyword') }}, {{ $titlePage }}" />
 
-    <meta property="og:title" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
+    <meta property="og:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
     <meta property="og:description" content="{{ setting('home.description') }} " />
-    <meta property="og:url" content="{{ env('APP_URL').$_SERVER['REQUEST_URI'] }}" />
+    <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
     <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
-    <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
-    <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $nameCategory }}" />
+    <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $titlePage }}" />
+    <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
     <meta name="twitter:description" content="{{ setting('home.description') }} " />
-    <meta name="twitter:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+    <meta name="twitter:image"
+        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta name="title" content="{{ setting('home.title') }}" />
 
     <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
     <meta property="og:image:secure_url"
-        content="{{ asset('storage') . '/' . str_replace('\\', '/',setting('home.logo_Menu')) }}" />
+        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
 
 
     <meta name="theme-color" content="#0086cd" />
 
-    <title>{{ setting('home.title') }} | {{ $nameCategory }}</title>
+    <title>{{ setting('home.title') }} | {{ $titlePage }}</title>
 @endsection
 
 @section('content')
@@ -30,10 +43,9 @@
             <nav aria-label="breadcrumb" class="">
                 <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
                     <li class="breadcrumb-item"><a href="{{ asset('') }}">Trang chủ</a></li>
-                    @if (isset($post))
-                        <li class="breadcrumb-item active" aria-current="page">{{ $nameCategory }}</li>
-                    @endif
-
+                    @include('includes.breadcrumb', [
+                        'slug_active' => $titlePage,
+                    ])
                 </ol>
             </nav>
         </div>
@@ -42,16 +54,16 @@
         <div class="d-flex flex-wrap container-fluid px-0 pb-4">
             <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-column rounded shadow px-3">
                 <h1 class="pt-3" style="color: var(--blue-coler-3)">
-                    {{ $nameCategory }}
+                    {{ $titlePage }}
                 </h1>
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-wrap">
                         @foreach ($posts as $post)
                             <div class="col-12 col-md-4 px-1 px-lg-3 pt-2 mb-3">
                                 <div class="card w-100 h-100 shadow" style="background-color: #fff">
-                                    <img src="{{ asset('storage').'/' . $post->image }}" class="card-img-top"
+                                    <img src="{{ asset('storage') . '/' . $post->image }}" class="card-img-top"
                                         alt="Ảnh {{ $post->title }}" style="aspect-ratio: 3/2; object-fit: cover" />
-                                    <a href="{{ asset('post') . '/' . $urlCategory . '/' . $post->slug }}"
+                                    <a href="{{ $url . $post->slug }}"
                                         class="card-body pt-1 px-2 pb-2 d-flex flex-column">
                                         <h2 class="txt-blue-2  pt-1"
                                             style="
@@ -68,13 +80,13 @@
                                             {{ $post->title }}
                                         </h2>
                                         <div class="d-flex">
-                                            <span class="span_time">28/09/2020 14:19:00</span>
+                                            <span class="span_time">{{ $post->created_at }}</span>
                                         </div>
                                         <div class="d-flex pt-2 justify-content-end fs_0_6 txt-black-1 mb-0 mt-auto">
                                             <p class="mb-0 mt-auto">
-                                                
-                                                    {{ $post->star->count() }}
-             
+
+                                                {{ $post->star->count() }}
+
                                                 lượt đánh giá,
                                                 @if ($post->star->avg('star'))
                                                     {{ $post->star->avg('star') }}
@@ -107,9 +119,8 @@
 
                     <div class="d-flex flex-column pt-2">
                         <div class="d-flex flex-wrap p-1">
-                            <iframe style="width: 100%; height: 10rem"
-                                src="{{ setting('home.map') }}"
-                                width="400" height="400" style="border: 0" allowfullscreen="" loading="lazy"
+                            <iframe style="width: 100%; height: 10rem" src="{{ setting('home.map') }}" width="400"
+                                height="400" style="border: 0" allowfullscreen="" loading="lazy"
                                 referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
@@ -127,17 +138,16 @@
                             <div id="carouselExampleControls" data-ride="carousel" data-interval="2000" class="m-auto"
                                 data-pause="true">
                                 <div class="carousel-inner">
-                                    <?php 
+                                    <?php
                                     use App\SupportCompany;
-                                    $suport_companies = SupportCompany::where('status', '1')->get();    
+                                    $suport_companies = SupportCompany::where('status', '1')->get();
                                     ?>
                                     @foreach ($suport_companies as $key => $suport_company)
-                                        
                                         @if ($key == 0)
                                             <div class="carousel-item active">
                                                 <div class="d-flex w-100">
                                                     <img style="height: 6rem"
-                                                        src="{{ asset('storage').'/' }}{{ $suport_company->img }}"
+                                                        src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
                                                         class="d-block m-auto"
                                                         alt="{{ $suport_company->nameCompany }}" />
                                                 </div>
@@ -146,7 +156,7 @@
                                             <div class="carousel-item">
                                                 <div class="d-flex w-100">
                                                     <img style="height: 6rem"
-                                                        src="{{ asset('storage').'/' }}{{ $suport_company->img }}"
+                                                        src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
                                                         class="d-block m-auto"
                                                         alt="{{ $suport_company->nameCompany }}" />
                                                 </div>
