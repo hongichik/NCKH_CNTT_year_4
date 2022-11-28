@@ -44,7 +44,6 @@
         <div class="d-flex container-fluid px-3 px-xl-5 flex-column">
             <nav aria-label="breadcrumb" class="">
                 <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
-                    <li class="breadcrumb-item"><a href="{{ asset('') }}">Trang chủ</a></li>
                     @include('includes.breadcrumb', [
                         'slug_active' => $titlePage,
                     ])
