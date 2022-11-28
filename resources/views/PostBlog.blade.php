@@ -9,6 +9,7 @@
         $body = $post->body;
         $star_count = $post->star->count();
         $star_avg = $post->star->avg('star');
+        $urlPostHot = asset('post') . '/';
     } elseif (isset($blog)) {
         $meta_description = $blog->description;
         $seo_title = $blog->title;
@@ -18,6 +19,7 @@
         $body = $blog->body;
         $star_count = $blog->star->count();
         $star_avg = $blog->star->avg('star');
+        $urlPostHot = asset('blog') . '/';
     }
 @endphp
 @section('SeoConent')
@@ -73,41 +75,14 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
-                <div class="shadow p-0 flex-column">
-                    <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
-                        <img src="img/icon/Map_light.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
-                            Bản đồ chỉ dẫn
-                        </h2>
-                    </div>
+                @include('includes.SearchPage', ['url_get' => 'test'])
+                @include('includes.home.map')
+                @include('includes.RalatedPost', [
+                    'title' => 'Bài viết nổi bật',
+                    'Posts' => $postHot,
+                    'url' => $urlPostHot,
+                ])
 
-                    <div class="d-flex flex-column pt-2">
-                        <div class="d-flex flex-wrap p-1">
-                            <iframe style="width: 100%; height: 10rem"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.32733569637!2d106.81526021467778!3d21.019584593467968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a8a1d7c000001%3A0x1e5cff07e0fdf7cb!2zxJDhuqFpIGjhu41jIEjhuqEgTG9uZywgY8ahIHPhu58gMQ!5e0!3m2!1svi!2s!4v1667013920040!5m2!1svi!2s"
-                                width="400" height="400" style="border: 0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="shadow mt-3 flex-column">
-                    <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
-                        <img src="img/icon/File_dock.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
-                            Bài viết liên quan
-                        </h2>
-                    </div>
-
-                    <div class="d-flex flex-column pt-2">
-                        <div class="d-flex flex-wrap p-1">
-                            <a href="#" class="px-1">
-                                <div class="d-flex flex-column">
-                                    <h3 class="txt-blue-2 fs_0_7">Tiêu đề Tiêu đề Tiêu đềTiêu đềTiêu đềTiêu đề</h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="navbar-nav mr-auto pl-2 pt-2  px-0 w-100">

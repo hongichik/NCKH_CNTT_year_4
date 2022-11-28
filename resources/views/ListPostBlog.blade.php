@@ -5,11 +5,13 @@
     if (isset($post)) {
         $titlePage = $nameCategory;
         $url = asset('post') . '/' . $urlCategory . '/';
+        $urlPostHot = asset('post').'/';
     }
     elseif(isset($blog)) {
         $titlePage = $nameCategory;
         $posts = $blogs;
         $url = asset('blog') . '/';
+        $urlPostHot = asset('blog') . '/';
     }
 @endphp
 @section('SeoConent')
@@ -109,65 +111,15 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
-                <div class="shadow p-0 flex-column">
-                    <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
-                        <img src="img/icon/Map_light.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
-                            Bản đồ chỉ dẫn
-                        </h2>
-                    </div>
-
-                    <div class="d-flex flex-column pt-2">
-                        <div class="d-flex flex-wrap p-1">
-                            <iframe style="width: 100%; height: 10rem" src="{{ setting('home.map') }}" width="400"
-                                height="400" style="border: 0" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="shadow mt-3 flex-column">
-                    <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
-                        <img src="img/icon/Send_duotone.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
-                            Đơn vị liên kết
-                        </h2>
-                    </div>
-
-                    <div class="d-flex flex-column pt-2">
-                        <div class="d-flex flex-wrap p-1">
-                            <div id="carouselExampleControls" data-ride="carousel" data-interval="2000" class="m-auto"
-                                data-pause="true">
-                                <div class="carousel-inner">
-                                    <?php
-                                    use App\SupportCompany;
-                                    $suport_companies = SupportCompany::where('status', '1')->get();
-                                    ?>
-                                    @foreach ($suport_companies as $key => $suport_company)
-                                        @if ($key == 0)
-                                            <div class="carousel-item active">
-                                                <div class="d-flex w-100">
-                                                    <img style="height: 6rem"
-                                                        src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
-                                                        class="d-block m-auto"
-                                                        alt="{{ $suport_company->nameCompany }}" />
-                                                </div>
-                                            </div>
-                                        @else
-                                            <div class="carousel-item">
-                                                <div class="d-flex w-100">
-                                                    <img style="height: 6rem"
-                                                        src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
-                                                        class="d-block m-auto"
-                                                        alt="{{ $suport_company->nameCompany }}" />
-                                                </div>
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('includes.SearchPage', ['url_get' => 'test'])
+                @include('includes.home.map')
+                @include('includes.RalatedPost',
+                    [
+                        'title' => 'Bài viết nổi bật',
+                        'Posts' => $postHot,
+                        'url' => $urlPostHot
+                    ]
+                )   
             </div>
         </div>
     </nav>
