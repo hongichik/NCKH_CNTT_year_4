@@ -42,7 +42,7 @@ return [
     */
 
     'models' => [
-        //'namespace' => 'App\\Models\\',
+        'namespace' => 'App\\Models\\',
     ],
 
     /*
@@ -104,13 +104,13 @@ return [
         /*
          * Select default language
          */
-        'default' => 'en',
+        'default' => 'vi',
 
         /*
          * Select languages that are supported.
          */
         'locales' => [
-            'en',
+            'vi',
             //'pt',
         ],
     ],
@@ -212,11 +212,11 @@ return [
         // The allowed mimetypes to be uploaded through the media-manager.
         // 'allowed_mimetypes' => '*', //All types can be uploaded
         'allowed_mimetypes' => [
-          'image/jpeg',
-          'image/png',
-          'image/gif',
-          'image/bmp',
-          'video/mp4',
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/bmp',
+            'video/mp4',
         ],
         //Path for media-manager. Relative to the filesystem.
         'path'                => '/',

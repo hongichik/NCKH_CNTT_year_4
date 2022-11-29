@@ -20,6 +20,7 @@ use App\Http\Controllers\User\StarContrllor;
 | contains the "web" middleware group. Now create something great!
 |
 */
+$url = "App\\Http\\Controllers\\User\\";
 
 Route::get('/', [HomeController::class, 'index'])->name("home");
 Route::get('/home', function () {
@@ -29,7 +30,7 @@ Route::get('/page', function () {
     return redirect('/');
 });
 
-Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::get('login', ['uses' => $url.'AuthController@index', 'as' => 'login']);
 Route::post('checkauth', [AuthController::class, 'CheckAuth']);
 Route::get('logout', [AuthController::class, 'logout']);
 
