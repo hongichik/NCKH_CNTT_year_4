@@ -17,7 +17,7 @@ class DocController extends Controller
     }
     public function file($filename)
     {
-        $file_path = public_path('storage/' .  str_replace('p-url-p','\\',$filename)); 
+        $file_path = public_path('storage/' .  str_replace('p-url-p','/',$filename)); 
 
         if (file_exists($file_path)) {
             return response()->file($file_path);
