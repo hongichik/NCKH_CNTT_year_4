@@ -19,14 +19,14 @@
                     @foreach ($suport_companies as $key => $suport_company)
                     @if ($key == 0)
                     <div class="carousel-item active">
-                        <div class="d-flex w-100">
-                            <img style="height: 6rem" src="{{ asset('storage') . '/' }}{{ $suport_company->img }}" class="d-block m-auto" alt="{{ $suport_company->nameCompany }}" />
+                        <div class="d-flex w-100" style=" height: 6rem; ">
+                            <img style="width:100%;" src="{{ asset('storage') . '/' }}{{ $suport_company->img }}" class="d-block m-auto" alt="{{ $suport_company->nameCompany }}" />
                         </div>
                     </div>
                     @else
                     <div class="carousel-item">
-                        <div class="d-flex w-100">
-                            <img style="height: 6rem" src="{{ asset('storage') . '/' }}{{ $suport_company->img }}" class="d-block m-auto" alt="{{ $suport_company->nameCompany }}" />
+                        <div class="d-flex w-100" style=" height: 6rem; ">
+                            <img style="width:100%;" src="{{ asset('storage') . '/' }}{{ $suport_company->img }}" class="d-block m-auto" alt="{{ $suport_company->nameCompany }}" />
                         </div>
                     </div>
                     @endif
