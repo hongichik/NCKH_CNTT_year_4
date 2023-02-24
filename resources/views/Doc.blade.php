@@ -32,15 +32,14 @@
                     <div class=" p-2 mt-0 d-flex col-12 col-md-6">
                         <?php
                         $data = str_replace('\\', '\\\\', $value->file);
-                        $data = str_replace('\/', 'p-url-p', $data);
                         $data_array = json_decode($data, true);
                         $filename = str_replace('\\\\', 'p-url-p', $data_array[0]['download_link']);
+                        $filename = str_replace('\/', 'p-url-p', $filename);
                         ?>
                         <a href=" {{ route('doc.file', ['filename' => $filename]) }}"
                             class="w-100 shadow p-2 doc_file rounded">
                             <h3 class=" font-weight-700">{{ $value->title }}</h3>
                             <p>{{ $value->des }}</p>
-                            {{$filename}}
                         </a>
                     </div>
                 @endforeach
