@@ -1,14 +1,16 @@
 <?php
 
-use App\Http\Controllers\User\PostController;
-use App\Http\Controllers\User\AuthController;
-use App\Http\Controllers\User\BlogController;
-use App\Http\Controllers\User\CommentController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\DocController;
+use App\Http\Controllers\User\StarContrllor;
+use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\BlogController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\PageController;
-use App\Http\Controllers\User\StarContrllor;
+use App\Http\Controllers\User\PostController;
+use App\Http\Controllers\User\CommentController;
+use App\Http\Controllers\User\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,12 @@ Route::get('/page', function () {
 Route::get('login', ['uses' => $url.'AuthController@index', 'as' => 'login']);
 Route::post('checkauth', [AuthController::class, 'CheckAuth']);
 Route::get('logout', [AuthController::class, 'logout']);
+
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact/create', [ContactController::class, 'create'])->name('contact.create');
+
+Route::get('doc', [DocController::class, 'index']);
+Route::get('doc/show/{filename}', [DocController::class, 'file'])->name('doc.file');
 
 Route::post('postComment', [CommentController::class, 'postComment']);
 

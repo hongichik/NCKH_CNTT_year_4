@@ -26,6 +26,7 @@
 .txt-gray-1 {
     color: var(--gray-coler-2);
 }
+
 .txt-black-1 {
     color: var(--black-coler-1);
 }
@@ -267,27 +268,35 @@ h3 a {
     font-weight: 600;
 }
 
-.span_time{
+.span_time {
     color: #757575;
     font-style: italic;
-    font-size: 0.5rem!important;
+    font-size: 0.5rem !important;
 }
 
-.breadcrumb-item{
+.breadcrumb-item {
     font-size: 0.7rem;
 }
 
-.breadcrumb-item a{
+.breadcrumb-item a {
     font-size: 0.7rem;
 }
 
-.fs_0_6{
+.fs_0_6 {
     font-size: 0.6rem;
 }
+
 .fs_0_7 {
     font-size: 0.7rem;
 }
 
+.fs_1 {
+    font-size: 1rem;
+}
+
+.font-weight-700 {
+    font-weight: 700;
+}
 
 
 /* 
@@ -366,19 +375,6 @@ login */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .star-wrap {
     text-align: center;
 }
@@ -392,5 +388,74 @@ login */
 }
 
 .star-wrap .star_post.check {
-    background-position: 0 -0.95rem!important;
+    background-position: 0 -0.95rem !important;
+}
+
+
+/* contact */
+.contact-form {
+    background: #fff;
+    margin-top: 0%;
+    margin-bottom: 5%;
+    width: 1000px;
+    max-width: 100%;
+}
+
+.contact-form .form-control {
+    border-radius: 1rem;
+    font-size: 17px;
+}
+
+.contact-image {
+    text-align: center;
+}
+
+.contact-image img {
+    border-radius: 6rem;
+    width: 11%;
+    margin-top: -3%;
+    transform: rotate(29deg);
+}
+
+.contact-form form {
+    padding: 14%;
+}
+
+.contact-form form .row {
+    margin-bottom: -7%;
+}
+
+.contact-form h3 {
+    margin-bottom: 8%;
+    margin-top: -10%;
+    text-align: center;
+    color: #0062cc;
+}
+
+.contact-form .btnContact {
+    border: none;
+    border-radius: 1rem;
+    padding: 5px 30px;
+    background: #0375bc;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.doc_file h3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+}
+
+.doc_file p {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
