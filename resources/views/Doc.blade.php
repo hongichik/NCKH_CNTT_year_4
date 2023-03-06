@@ -49,7 +49,6 @@
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
                 @include('includes.home.map')
-                @include('includes.home.SupportCompany')
             </div>
             <div class="w-100 mt-auto d-flex pt-3">
                 {{ $Documents->links('includes.paginate') }}

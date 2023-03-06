@@ -1,4 +1,3 @@
-
 .slick-slide {
     margin: 0 20px;
 }
@@ -48,8 +47,26 @@
 }
 
 
+.line-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
+.page-body img {
+    max-width: 80vw;
+    height: auto;
+}
 
+.page-body * {
+    text-align: justify;
+}
+
+.page-body td{
+    padding: 6px;
+}
 
 
 

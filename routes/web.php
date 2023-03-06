@@ -2,6 +2,7 @@
 
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\ReportController;
 use App\Http\Controllers\User\DocController;
 use App\Http\Controllers\User\StarContrllor;
 use App\Http\Controllers\User\AuthController;
@@ -42,6 +43,9 @@ Route::post('contact/create', [ContactController::class, 'create'])->name('conta
 Route::get('doc', [DocController::class, 'index']);
 Route::get('doc/show/{filename}', [DocController::class, 'file'])->name('doc.file');
 
+Route::get('report', [ReportController::class, 'index']);
+Route::post('report', [ReportController::class, 'create'])->name('report.create');
+
 Route::post('postComment', [CommentController::class, 'postComment']);
 
 
@@ -57,3 +61,4 @@ Route::get('/page/{namePage}', [PageController::class, 'index']);
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+?>

@@ -68,7 +68,7 @@
                 <div class="d-flex">
                     <span class="span_time">{{ $created_at }}</span>
                 </div>
-                <div class="d-block pt-3 pb-3 content_post"
+                <div class="d-block pt-3 pb-3 content_post page-body"
                     style="font-size: 0.65rem; word-wrap: break-word;overflow-x: scroll;">
                     {!! $body !!}
                 </div>

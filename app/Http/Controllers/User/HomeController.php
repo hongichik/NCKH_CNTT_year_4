@@ -25,7 +25,15 @@ class HomeController extends Controller
 
         $category_1 =  Category::where('slug', setting('home.new_1'))->first();
         $category_2 =  Category::where('slug', setting('home.new_2'))->first();
-        $category_tuyen_sinh =  Category::where('slug', setting('home.tuyen_sinh'))->first()->PostMany->skip(0)->take(3);
+        $category_tuyen_sinh = Category::where('slug', setting('home.tuyen_sinh'))
+        ->with(['PostMany' => function ($query) {
+            $query->where('status', 'PUBLISHED')
+            ->orderBy('id', 'desc');
+        }])
+            ->first()
+            ->PostMany
+            ->skip(0)
+            ->take(3);
         $hoat_dong = HaotDong::where('status', '1')->get();
         $Events = Event::where('status', '1')->orderByDesc('created_at')->get();
         //dd($Events);
@@ -42,3 +50,4 @@ class HomeController extends Controller
         );
     }
 }
+?>

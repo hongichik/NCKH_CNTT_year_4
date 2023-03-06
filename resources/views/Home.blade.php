@@ -34,7 +34,7 @@
                                 data-pause="true">
                                 <ol class="carousel-indicators m-0">
                                     <?php $key2 = 0; ?>
-                                    @foreach ($new_1->PostMany as $key => $new)
+                                    @foreach ($new_1->PostMany->skip(0)->take(5) as $key => $new)
                                         @if ($new->status == 'PUBLISHED')
                                             @if ($key2 == 0)
                                                 <?php $key2 = 1; ?>
@@ -49,7 +49,7 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <?php $key1 = 0; ?>
-                                    @foreach ($new_1->PostMany as $new)
+                                    @foreach ($new_1->PostMany->skip(0)->take(5) as $new)
                                         @if ($new->status == 'PUBLISHED')
                                             @if ($key1 == 0)
                                                 <?php $key1 = 1; ?>
@@ -59,8 +59,8 @@
                                                         <img src="{{ asset('storage') . '/' . $new->image }}"
                                                             alt="" class="p-0 m-0 w-100 rounded"
                                                             style="aspect-ratio: 3/2; object-fit: cover" />
-                                                        <h2 class="txt-blue-2 pt-2">{{ $new->title }}</h2>
-                                                        <p class="txt-black-2 m-0 pb-2">
+                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}</h2>
+                                                        <p class="txt-black-2 m-0 text-justify line-2">
                                                             {{ $new->meta_description }}
                                                         </p>
                                                         <span class="span_time pb-2">{{ $new->created_at }}</span>
@@ -73,8 +73,8 @@
                                                         <img src="{{ asset('storage') . '/' . $new->image }}"
                                                             alt="" class="p-0 m-0 w-100 rounded"
                                                             style="aspect-ratio: 3/2; object-fit: cover" />
-                                                        <h2 class="txt-blue-2 pt-2">{{ $new->title }}</h2>
-                                                        <p class="txt-black-2 m-0 pb-2">
+                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}</h2>
+                                                        <p class="txt-black-2 m-0 text-justify line-2">
                                                             {{ $new->meta_description }}
                                                         </p>
                                                         <span class="span_time pb-2">{{ $new->created_at }}</span>
@@ -110,10 +110,10 @@
                                     </style>
                                     <div class="d-flex flex-column pt-1">
                                         <ul class="m-0 p-0">
-                                            @foreach ($new_1->PostMany as $new)
+                                            @foreach ($new_1->PostMany->skip(0)->take(8) as $new)
                                                 <li class="d-flex flex-column pt-1"
                                                     style="border-bottom: 0.05rem dashed rgb(152, 152, 152)">
-                                                    <a href="{{ asset('post') . '/' . $new_1->slug . '/' . $new->slug }}"
+                                                    <a class="text-justify line-2" href="{{ asset('post') . '/' . $new_1->slug . '/' . $new->slug }}"
                                                         style="color: black">{{ $new->title }}</a>
                                                     <span class="span_time pb-1 pt-1">{{ $new->created_at }}</span>
                                                 </li>
@@ -358,8 +358,8 @@
                                     <img src="{{ asset('storage\\') }}{{ $hoat_dong->image }}"
                                         alt="{{ $hoat_dong->description }}" class="p-0 m-0 w-100 rounded"
                                         style="aspect-ratio: 3/2; object-fit: cover" />
-                                    <h2 class="txt-blue-2 pt-2">{{ $hoat_dong->title }}</h2>
-                                    <p class="txt-black-2 m-0 pb-2">
+                                    <h2 class="txt-blue-2 pt-2 text-justify">{{ $hoat_dong->title }}</h2>
+                                    <p class="txt-black-2 m-0 pb-2 text-justify">
                                         {{ $hoat_dong->description }}
                                     </p>
                                     <span class="span_time pb-2">{{ $hoat_dong->created_at }}</span>

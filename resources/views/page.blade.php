@@ -31,13 +31,16 @@
             </div>
             <div class="d-block pt-2" style="font-size: 0.8rem; word-wrap: break-word">
                 <style>
-                    img {
+                    .page-body img {
                         max-width: 80vw;
                         height: auto;
                     }
                 </style>
 
-                {!! $page->body !!}
+                <div class="page-body">
+                    {!! $page->body !!}
+                </div>
+                
             </div>
             <div class="navbar-nav mr-auto pl-2 border-top pt-2 w-100">
                 <h2 style="color: var(--blue-coler-3); word-wrap: break-word">Thông tin liên quan</h2>

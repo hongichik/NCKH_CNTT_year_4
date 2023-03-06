@@ -276,10 +276,18 @@ h3 a {
 
 .breadcrumb-item {
     font-size: 0.7rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 278px;
 }
 
 .breadcrumb-item a {
     font-size: 0.7rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 278px;
 }
 
 .fs_0_6 {
@@ -406,6 +414,10 @@ login */
     font-size: 17px;
 }
 
+
+.contact-form.border-0 .form-control{
+    border-radius: 0;
+}
 .contact-image {
     text-align: center;
 }
