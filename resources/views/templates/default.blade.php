@@ -17,7 +17,18 @@
     <meta name="twitter:site" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
     <meta property="og:site_name" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
     <meta name="twitter:creator" content="{{ env('APP_URL') }}" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9W3J0QRW9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-S9W3J0QRW9');
+    </script>
     @yield('SeoConent')
 
     <link rel="shortcut icon" href="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo')) }}"
