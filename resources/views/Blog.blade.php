@@ -62,7 +62,7 @@
     <nav class="d-flex container-fluid px-3 px-xl-5 flex-column" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex flex-wrap container-fluid px-0 pb-4">
             <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-column rounded shadow px-3">
-                <h1 class="pt-3" style="color: var(--blue-coler-3); font-size: 0.8rem">
+                <h1 class="pt-3 text-uppercase" style="color: var(--blue-coler-2); font-size: 0.8rem">
                     {{ $title }}
                 </h1>
                 <div class="d-flex">
@@ -75,18 +75,17 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
-                @include('includes.SearchPage', ['url_get' => 'test'])
                 @include('includes.home.map')
-                @include('includes.RalatedPost', [
+                {{-- @include('includes.RalatedPost', [
                     'title' => 'Bài viết nổi bật',
                     'Posts' => $postHot,
                     'url' => $urlPostHot,
-                ])
+                ]) --}}
 
             </div>
         </div>
         <div class="navbar-nav mr-auto pl-2 pt-2  px-0 w-100">
-            <h2 style="color: var(--blue-coler-3)">Đánh giá</h2>
+            <h2 style="color: var(--blue-coler-2)">Đánh giá</h2>
             <div class="d-flex pl-3">
                 <p class="my-auto pt-1 pr-1">{{ $star_count }} lượt đánh giá,
                     @if ($star_avg)

@@ -40,7 +40,7 @@
 }
 
 .txt-blue-3 {
-    color: var(--blue-coler-3);
+    color: var(--blue-coler-2);
 }
 
 .txt-blue-2 {
@@ -68,7 +68,7 @@ body {
     }
 
     .nav-link-father {
-        color: var(--blue-coler-3);
+        color: var(--blue-coler-2);
         font-weight: 500;
         font-size: 0.7rem;
     }
@@ -86,7 +86,7 @@ body {
     }
 
     .nav-link-father {
-        color: var(--blue-coler-3);
+        color: var(--blue-coler-2);
         font-weight: 500;
         font-size: 0.7rem;
     }
@@ -104,7 +104,7 @@ body {
     }
 
     .nav-link-father {
-        color: var(--blue-coler-3);
+        color: var(--blue-coler-2);
         font-weight: 500;
         font-size: 0.7rem;
     }
@@ -122,7 +122,7 @@ body {
     }
 
     .nav-link-father {
-        color: var(--blue-coler-3);
+        color: var(--blue-coler-2);
         font-weight: 500;
         font-size: 0.7rem;
     }
@@ -222,7 +222,7 @@ body {
 }
 
 a {
-    color: var(--blue-coler-3);
+    color: var(--blue-coler-2);
     font-weight: 500;
     font-size: 0.6rem;
     line-height: 0.8rem;
@@ -415,9 +415,10 @@ login */
 }
 
 
-.contact-form.border-0 .form-control{
+.contact-form.border-0 .form-control {
     border-radius: 0;
 }
+
 .contact-image {
     text-align: center;
 }

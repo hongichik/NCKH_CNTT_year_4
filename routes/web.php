@@ -48,11 +48,12 @@ Route::post('report', [ReportController::class, 'create'])->name('report.create'
 
 Route::post('postComment', [CommentController::class, 'postComment']);
 
-
-Route::get('post/{slugCategory}', [PostController::class, 'index']);
+Route::get('post/search', [PostController::class, 'search'])->name('posts.search');
+Route::get('post/{slugCategory}', [PostController::class, 'index'])->name('post.category');
 Route::get('post/{slugCategory}/{slugPost}', [PostController::class, 'post'])->name('post');
 
 Route::get('blog', [BlogController::class, 'index']);
+Route::get('blog/search', [BlogController::class, 'search']);
 Route::get('blog/{blogSlug}', [BlogController::class, 'blog']);
 
 Route::post('star', [StarContrllor::class, 'index'])->name('star');

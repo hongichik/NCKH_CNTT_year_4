@@ -6,6 +6,6 @@
             <li class="breadcrumb-item"><a href="{{ env('APP_URL').$url_category }}">{{ $slug_category }}</a>
             </li>
         @endif
-        <li class="breadcrumb-item active" aria-current="page">{{ $slug_active }}</li>
+        {{-- <li class="breadcrumb-item active" aria-current="page">{{ $slug_active }}</li> --}}
     </ol>
 </nav>

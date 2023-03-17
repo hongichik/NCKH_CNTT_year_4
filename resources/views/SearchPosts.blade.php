@@ -2,28 +2,17 @@
 
 @php
     
-    if (isset($post)) {
-        $titlePage = $nameCategory;
-        $url = asset('post') . '/' . $urlCategory . '/';
-        $urlPostHot = asset('post').'/';
-    }
-    elseif(isset($blog)) {
-        $titlePage = $nameCategory;
-        $posts = $blogs;
-        $url = asset('blog') . '/';
-        $urlPostHot = asset('blog') . '/';
-    }
 @endphp
 @section('SeoConent')
     <meta name="description" content="{{ setting('home.description') }}" />
-    <meta name="keywords" content="{{ setting('home.keyword') }}, {{ $titlePage }}" />
+    <meta name="keywords" content="{{ setting('home.keyword') }}, {{ $searchName }}" />
 
-    <meta property="og:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
+    <meta property="og:title" content="{{ setting('home.title') }} | {{ $searchName }}" />
     <meta property="og:description" content="{{ setting('home.description') }} " />
     <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
     <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
-    <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $titlePage }}" />
-    <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
+    <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $searchName }}" />
+    <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $searchName }}" />
     <meta name="twitter:description" content="{{ setting('home.description') }} " />
     <meta name="twitter:image"
         content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
@@ -36,26 +25,17 @@
 
     <meta name="theme-color" content="#0086cd" />
 
-    <title>{{ setting('home.title') }} | {{ $titlePage }}</title>
+    <title>{{ setting('home.title') }} | {{ $searchName }}</title>
 @endsection
 
 @section('content')
     <nav class="d-flex flex-column py-3" style="background-color: rgb(247, 251, 255)">
-        <div class="d-flex container-fluid px-3 px-xl-5 flex-column">
-            <nav aria-label="breadcrumb" class="">
-                <ol class="breadcrumb p-0 m-0" style="background-color: transparent; font-size: 0.8rem">
-                    @include('includes.breadcrumb', [
-                        'slug_active' => $titlePage,
-                    ])
-                </ol>
-            </nav>
-        </div>
     </nav>
     <nav class="d-flex container-fluid px-3 px-xl-5 flex-column" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex flex-wrap container-fluid px-0 pb-4">
             <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-column rounded shadow px-3">
-                <h1 class="pt-3" style="color: var(--blue-coler-3)">
-                    {{ $titlePage }}
+                <h1 class="pt-3" style="color: var(--blue-coler-2)">
+                    Tìm kiếm : {{ $searchName }}
                 </h1>
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-wrap">
@@ -64,12 +44,14 @@
                                 <div class="card w-100 h-100 shadow" style="background-color: #fff">
                                     <img src="{{ asset('storage') . '/' . $post->image }}" class="card-img-top"
                                         alt="Ảnh {{ $post->title }}" style="aspect-ratio: 3/2; object-fit: cover" />
-                                    <a href="{{ $url . $post->slug }}"
-                                        class="card-body pt-1 px-2 pb-2 d-flex flex-column">
+                                    @php
+                                        $url = asset('post') . '/' . $post->category->slug . '/';
+                                    @endphp
+                                    <a href="{{ $url . $post->slug }}" class="card-body pt-1 px-2 pb-2 d-flex flex-column">
                                         <h2 class="txt-blue-2  pt-1"
                                             style="
                                             font-weight: 600;
-                                            color: var(--blue-coler-3);
+                                            color: var(--blue-coler-2);
                                             font-size: 0.7rem;
                                             line-height: 1rem;
                                             display: -webkit-box;
@@ -110,15 +92,15 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
-                @include('includes.SearchPage', ['url_get' => 'test'])
-                @include('includes.home.map')
-                @include('includes.RalatedPost',
-                    [
+                @if (!Illuminate\Support\Facades\Request::is('*post*'))
+                    @include('includes.SearchPage', ['url_get' => asset('blog/search')])
+                    @include('includes.home.map')
+                    {{-- @include('includes.RalatedPost', [
                         'title' => 'Bài viết nổi bật',
                         'Posts' => $postHot,
-                        'url' => $urlPostHot
-                    ]
-                )   
+                        'url' => $urlPostHot,
+                    ]) --}}
+                @endif
             </div>
         </div>
     </nav>

@@ -18,7 +18,7 @@
                             text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
                                 -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
                             font-weight: bold;
-                            color: var(--blue-coler-3);
+                            color: var(--blue-coler-2);
                         ">
                         {!! setting('home.name_logo') !!}
                     </p>
@@ -34,7 +34,7 @@
                     Đại học hạ long"
                             style="height: 0.8rem" />
                         <p class="mt-auto mb-auto"
-                            style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
+                            style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-2)">
                             Gmail: {{ setting('home.gmail') }}
                         </p>
                         <img src="{{ asset('asset/img/icon/icon_phone.png') }}" class="pr-1 pl-3"
@@ -43,7 +43,7 @@
                     Đại học hạ long"
                             style="height: 0.8rem" />
                         <p class="mt-auto mb-auto"
-                            style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-3)">
+                            style="font-size: 0.5rem; font-weight: 900; color: var(--blue-coler-2)">
                             Hotline : {{ setting('home.phone_number') }}
                         </p>
                     </div>
@@ -76,8 +76,9 @@
                                 <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
                                     alt="icon-search" />
                             </button>
-                            <div class="form_search ml-2 rounded">
-                                <input type="text" class="form_search_term" placeholder="Bạn muốn tìm kiếm gì?" />
+                            <form class="form_search ml-2 rounded" action="{{ route('posts.search') }}">
+                                <input type="text" name="title" class="form_search_term"
+                                    placeholder="Bạn muốn tìm kiếm gì?" />
                                 <button type="submit" class="form_search_button">
                                     <img src="{{ asset('asset/img/icon/icons8-search.svg') }}" style="height: 1rem"
                                         alt="icon-search" />
@@ -87,7 +88,7 @@
                                     <img src="{{ asset('asset/img/icon/icon_close.svg') }}" style="height: 1.25rem"
                                         alt="icon-search" />
                                 </button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -109,8 +110,7 @@
                         alt="icon
                         Đại học hạ long" style="height: 1.9rem" />
                     <div class="ml-2 mr-2" style="width: 0.05rem; background-color: var(--blue-coler-1)"></div>
-                    <p class="mt-auto mb-auto"
-                        style="font-size: 0.53rem; font-weight: 900; color: var(--blue-coler-3)">
+                    <p class="mt-auto mb-auto" style="font-size: 0.53rem; font-weight: 900; color: var(--blue-coler-2)">
                         {!! setting('home.name_logo') !!}
                     </p>
                 </div>

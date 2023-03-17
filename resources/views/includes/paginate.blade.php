@@ -6,7 +6,7 @@ $link_limit = 7;
     <nav class="Page navigation example h-100 d-flex justify-content-end">
         <ul class="pagination  mb-3 mt-auto">
             <li class="page-item {{ $paginator->currentPage() == 1 ? ' disabled' : '' }}">
-                <a class="page-link p-2" href="{{ $paginator->url(1) }}">Trang trước đó</a>
+                <a class="page-link p-2" href="{{ $paginator->appends(request()->except('page'))->url(1) }}">Trang trước đó</a>
             </li>
             @for ($i = 1; $i <= $paginator->lastPage(); $i++)
                 <?php
@@ -22,13 +22,14 @@ $link_limit = 7;
                 ?>
                 @if ($from < $i && $i < $to)
                     <li class="page-item {{ $paginator->currentPage() == $i ? ' active' : '' }}">
-                        <a class="page-link p-2" href="{{ $paginator->url($i) }}">{{ $i }}</a>
+                        <a class="page-link p-2" href="{{ $paginator->appends(request()->except('page'))->url($i) }}">{{ $i }}</a>
                     </li>
                 @endif
             @endfor
             <li class="page-item {{ $paginator->currentPage() == $paginator->lastPage() ? ' disabled' : '' }}">
-                <a class="page-link p-2" href="{{ $paginator->url($paginator->lastPage()) }}">Trang tiếp theo</a>
+                <a class="page-link p-2" href="{{ $paginator->appends(request()->except('page'))->url($paginator->lastPage()) }}">Trang tiếp theo</a>
             </li>
         </ul>
     </nav>
 @endif
+

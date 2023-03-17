@@ -1,5 +1,5 @@
 <div class="navbar-nav mr-auto pl-2 pt-2 border-top px-0 w-100">
-    <h2 style="color: var(--blue-coler-3)">Bình luận</h2>
+    <h2 style="color: var(--blue-coler-2)">Bình luận</h2>
     <form class="d-flex flex-column" action="{{ asset('postComment') }}" method="post">
         @csrf
         @if (Auth::check())

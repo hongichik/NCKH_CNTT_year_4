@@ -30,7 +30,7 @@ class PostController extends Controller
         if ($category == null) {
             return redirect()->route('home');
         }
-        return view('ListPostBlog')->with(
+        return view('ListPost')->with(
             [
                 "post" => true,
                 "nameCategory" => $category->name,
@@ -41,6 +41,28 @@ class PostController extends Controller
         );
     }
 
+
+    public function search(Request $request)
+    {
+        $posts  = Post::where('title', 'LIKE', "%{$request->title}%")->paginate(9);
+        // $posts  = Post::where('category', 'slug', $slugCategory)->paginate(9);
+        // $postHot = DB::table('star_post_blogs')->select(DB::raw("posts.title , posts.slug"), DB::raw("categories.slug categoty_slug"), DB::raw("star_post_blogs.post_id"), DB::raw("count(post_id) sumstar"), DB::raw("sum(star)/count(post_id) avgstar"))
+        // ->groupBy('post_id')->havingRaw("sumstar > 0")
+        // ->join('posts', DB::raw("posts.id"), '=', 'star_post_blogs.post_id')
+        // ->join('categories', DB::raw("posts.category_id"), '=', 'categories.id')->orderByDesc('avgstar')->paginate(6);
+        // $category =  Category::where('slug', $slugCategory)->first();
+
+        // if ($category == null) {
+        //     return redirect()->route('home');
+        // }
+        return view('SearchPosts')->with(
+            [
+                "post" => true,
+                "posts" => $posts,
+                "searchName" => $request->title
+            ]
+        );
+    }
     public function post($slugCategory, $slugPost)
     {
 
@@ -61,7 +83,7 @@ class PostController extends Controller
             ->groupBy('post_id')->havingRaw("sumstar > 0")
             ->join('posts', DB::raw("posts.id"), '=', 'star_post_blogs.post_id')
             ->join('categories', DB::raw("posts.category_id"), '=', 'categories.id')->orderByDesc('avgstar')->paginate(6);
-        return view('PostBlog')->with([
+        return view('Post')->with([
             "nameCategory" => $category->name,
             "urlCategory" => $slugCategory,
             "post" => $post,

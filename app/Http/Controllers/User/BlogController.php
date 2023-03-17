@@ -16,7 +16,23 @@ class BlogController extends Controller
         $postHot = DB::table('star_post_blogs')->select(DB::raw("blogs.title , blogs.slug"), DB::raw("star_post_blogs.blog_id"), DB::raw("count(blog_id) sumstar"), DB::raw("sum(star)/count(blog_id) avgstar"))
             ->groupBy('blog_id')->havingRaw("sumstar > 0")
             ->join('blogs', DB::raw("blogs.id"), '=', 'star_post_blogs.blog_id')->paginate(6);
-        return view('ListPostBlog')->with(
+        return view('ListBlog')->with(
+            [
+                "blog" => true,
+                "nameCategory" => 'Blog sinh viên',
+                "blogs" => $blog,
+                'postHot' => $postHot
+            ]
+        );
+    }
+
+    public function search(Request $request)
+    {
+        $blog = Blog::where('title','LIKE', "%{$request->search_name}%")->orderBy('id', 'DESC')->paginate(9);
+        $postHot = DB::table('star_post_blogs')->select(DB::raw("blogs.title , blogs.slug"), DB::raw("star_post_blogs.blog_id"), DB::raw("count(blog_id) sumstar"), DB::raw("sum(star)/count(blog_id) avgstar"))
+        ->groupBy('blog_id')->havingRaw("sumstar > 0")
+        ->join('blogs', DB::raw("blogs.id"), '=', 'star_post_blogs.blog_id')->paginate(6);
+        return view('ListBlog')->with(
             [
                 "blog" => true,
                 "nameCategory" => 'Blog sinh viên',
@@ -33,7 +49,7 @@ class BlogController extends Controller
         $postHot = DB::table('star_post_blogs')->select(DB::raw("blogs.title , blogs.slug"), DB::raw("star_post_blogs.blog_id"), DB::raw("count(blog_id) sumstar"), DB::raw("sum(star)/count(blog_id) avgstar"))
             ->groupBy('blog_id')->havingRaw("sumstar > 0")
             ->join('blogs', DB::raw("blogs.id"), '=', 'star_post_blogs.blog_id')->paginate(6);
-        return view('PostBlog')->with([
+        return view('Blog')->with([
             "nameCategory" => 'Blog sinh viên',
             "blog" => $blog,
             'comments' => $comment,

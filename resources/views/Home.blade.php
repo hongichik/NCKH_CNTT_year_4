@@ -30,7 +30,7 @@
                 <div class="d-flex flex-column">
                     <div class="d-flex flex-wrap">
                         <div class="pb-2 px-2 col-12 col-md-7">
-                            <div id="tintuc" class="carousel slide" data-ride="carousel" data-interval="2000"
+                            <div id="tintuc" class="carousel slide" data-ride="carousel" data-interval="5000"
                                 data-pause="true">
                                 <ol class="carousel-indicators m-0">
                                     <?php $key2 = 0; ?>
@@ -59,7 +59,8 @@
                                                         <img src="{{ asset('storage') . '/' . $new->image }}"
                                                             alt="" class="p-0 m-0 w-100 rounded"
                                                             style="aspect-ratio: 3/2; object-fit: cover" />
-                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}</h2>
+                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}
+                                                        </h2>
                                                         <p class="txt-black-2 m-0 text-justify line-2">
                                                             {{ $new->meta_description }}
                                                         </p>
@@ -73,7 +74,8 @@
                                                         <img src="{{ asset('storage') . '/' . $new->image }}"
                                                             alt="" class="p-0 m-0 w-100 rounded"
                                                             style="aspect-ratio: 3/2; object-fit: cover" />
-                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}</h2>
+                                                        <h2 class="txt-blue-2 pt-2 text-justify line-2">{{ $new->title }}
+                                                        </h2>
                                                         <p class="txt-black-2 m-0 text-justify line-2">
                                                             {{ $new->meta_description }}
                                                         </p>
@@ -110,22 +112,40 @@
                                     </style>
                                     <div class="d-flex flex-column pt-1">
                                         <ul class="m-0 p-0">
+                                            @php
+                                                $id_new_1 = 0;
+                                            @endphp
                                             @foreach ($new_1->PostMany->skip(0)->take(8) as $new)
+                                                @php
+                                                    $id_new_1 += 1;
+                                                @endphp
                                                 <li class="d-flex flex-column pt-1"
                                                     style="border-bottom: 0.05rem dashed rgb(152, 152, 152)">
-                                                    <a class="text-justify line-2" href="{{ asset('post') . '/' . $new_1->slug . '/' . $new->slug }}"
+                                                    <a class="text-justify line-2"
+                                                        href="{{ asset('post') . '/' . $new_1->slug . '/' . $new->slug }}"
                                                         style="color: black">{{ $new->title }}</a>
                                                     <span class="span_time pb-1 pt-1">{{ $new->created_at }}</span>
                                                 </li>
                                             @endforeach
                                         </ul>
+                                        @if ($id_new_1 == 8)
+                                            <a href="{{ route('post.category', ['slugCategory' => $new_1->slug]) }}"
+                                                class="fs_0_7 py-3">Xem thêm</a>
+                                        @endif
+
                                     </div>
                                 </div>
                                 <div role="tabpanel" class="tab-pane fade" style="max-height: 16rem; overflow-y: scroll"
                                     id="buzz">
                                     <div class="d-flex flex-column pt-1">
                                         <ul class="m-0 p-0">
+                                            @php
+                                                $id_new_2 = 0;
+                                            @endphp
                                             @foreach ($new_2->PostMany as $new)
+                                                @php
+                                                    $id_new_2 += 1;
+                                                @endphp
                                                 <li class="d-flex flex-column pt-1"
                                                     style="border-bottom: 0.05rem dashed rgb(152, 152, 152)">
                                                     <a href="{{ asset('post') . '/' . $new_2->slug . '/' . $new->slug }}"
@@ -135,6 +155,10 @@
                                             @endforeach
 
                                         </ul>
+                                        @if ($id_new_2 == 8)
+                                            <a href="{{ route('post.category', ['slugCategory' => $new_1->slug]) }}"
+                                                class="fs_0_7 py-3">Xem thêm</a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -143,11 +167,11 @@
                 </div>
             </div>
             <div class="p-0 mt-1 col-3 d-none d-lg-flex flex-column">
-                <div class="shadow p-0 flex-column">
+                <div class="shadow p-0 flex-column mt-4">
                     <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
                         <img src="img/icon/Map_light.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
-                            Bản đồ chỉ dẫn
+                        <h2 class="txt-blue-2 my-auto fs_0_7" style="font-weight: 500; color: #fff">
+                            Bản đồ chỉ dẫn {{ $test_content }}
                         </h2>
                     </div>
 
@@ -162,14 +186,14 @@
                 <div class="shadow mt-3 flex-column">
                     <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
                         <img src="img/icon/Send_duotone.svg" alt="" style="font-size: 1rem" class="mr-2" />
-                        <h2 class="txt-blue-2 my-auto" style="font-weight: 500; color: #fff">
+                        <h2 class="txt-blue-2 my-auto fs_0_7" style="font-weight: 500; color: #fff">
                             Đơn vị liên kết
                         </h2>
                     </div>
 
                     <div class="d-flex flex-column pt-2">
                         <div class="d-flex flex-wrap p-1">
-                            <div id="carouselExampleControls" data-ride="carousel" data-interval="2000" class="m-auto"
+                            <div id="carouselExampleControls" data-ride="carousel" data-interval="5000" class="m-auto"
                                 data-pause="true">
                                 <div class="carousel-inner">
                                     <?php
@@ -180,7 +204,7 @@
                                         @if ($key == 0)
                                             <div class="carousel-item active">
                                                 <div class="d-flex w-100">
-                                                    <img style="height: 6rem"
+                                                    <img style=" object-fit: contain; height: 6rem; max-width: 100%;"
                                                         src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
                                                         class="d-block m-auto"
                                                         alt="{{ $suport_company->nameCompany }}" />
@@ -189,7 +213,7 @@
                                         @else
                                             <div class="carousel-item">
                                                 <div class="d-flex w-100">
-                                                    <img style="height: 6rem"
+                                                    <img style=" object-fit: contain; height: 6rem;max-width: 100%;"
                                                         src="{{ asset('storage') . '/' }}{{ $suport_company->img }}"
                                                         class="d-block m-auto"
                                                         alt="{{ $suport_company->nameCompany }}" />
@@ -300,16 +324,15 @@
                                 style="aspect-ratio: 3/2; object-fit: cover" />
                             <a href="{{ asset('post') . '/' . setting('home.tuyen_sinh') . '/' . $tuyen_sinh->slug }}"
                                 class="card-body pt-1">
-                                <h2 class="txt-blue-2 my-auto pt-1"
+                                <h2 class="txt-blue-2 my-auto pt-1 line-2"
                                     style="
-										height: 2.5rem;
 										font-weight: 600;
-										color: var(--blue-coler-3);
+										color: var(--blue-coler-2);
 										font-size: 0.7rem;
 									">
                                     {{ $tuyen_sinh->title }}
                                 </h2>
-                                <p class="card-text text-justify" style="font-size: 0.65rem; color: black">
+                                <p class="card-text text-justify line-4" style="font-size: 0.65rem; color: black">
                                     {{ $tuyen_sinh->meta_description }}
                                 </p>
                             </a>
