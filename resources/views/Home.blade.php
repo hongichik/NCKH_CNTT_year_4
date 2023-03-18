@@ -289,7 +289,7 @@
 								background-repeat: no-repeat;
 								background-size: cover;
 							">
-                        <a href="{{ env('APP_URL') . setting('dao-tao.url_2') }}"
+                        <a href="{{ env('APP_URL') . setting('dao-tao.url_3') }}"
                             style="width: 15rem; height: 6rem; background-color: #0086cdc2"
                             class="d-flex flex-column m-auto rounded shadow-lg">
                             <div class="m-auto">
