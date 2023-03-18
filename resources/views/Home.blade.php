@@ -94,10 +94,10 @@
                                     <a class="nav-link active px-1" href="#profile" role="tab" data-toggle="tab"
                                         aria-selected="true">{{ $new_1->name }}</a>
                                 </li>
-                                <li class="nav-item px-1">
+                                {{-- <li class="nav-item px-1">
                                     <a class="nav-link" href="#buzz" role="tab"
                                         data-toggle="tab">{{ $new_2->name }}</a>
-                                </li>
+                                </li> --}}
                             </ul>
 
                             <!-- Tab panes -->
