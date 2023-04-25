@@ -30,7 +30,6 @@ class ReportController extends Controller
             'id_department' => 'required',
             'area' => 'required',
             'category' => 'required',
-            'level' => 'required',
             'content' => 'required',
             'image.*' => 'image|mimes:jpeg,png', // validate image
         ]);
@@ -47,7 +46,6 @@ class ReportController extends Controller
             'id_department' => $request->input('id_department'),
             'area' => $request->input('area'),
             'category' => $request->input('category'),
-            'level' => $request->input('level'),
             'content' => $request->input('content'),
             'status' => 'pending',
             'image' => $paths

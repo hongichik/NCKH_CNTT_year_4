@@ -57,7 +57,8 @@ Route::get('blog', [BlogController::class, 'index']);
 Route::get('blog/search', [BlogController::class, 'search']);
 Route::get('blog/{blogSlug}', [BlogController::class, 'blog']);
 
-Route::post('/admissions',[AdmissionsController::class,'index'])->name('admissions');
+Route::post('/admissions',[AdmissionsController::class,'create'])->name('admissions');
+Route::get('/admissions',[AdmissionsController::class,'index'])->name('admissions');
 
 Route::post('star', [StarContrllor::class, 'index'])->name('star');
 

@@ -53,27 +53,22 @@
                                     <input type="text" class="form-control" name="area" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="department" class="fs_0_7">Phòng ban:</label>
-                                    <select class="form-control" id="department" name="id_department" required>
+                                    <label for="department" class="fs_0_7">Thông tin gửi đến bộ phận:</label>
+                                    <select class="form-control" id="department" name="id_department" required style="max-height: 100px;">
                                         @foreach ($department as $dvalue)
                                             <option value="{{ $dvalue->id }}">{{ $dvalue->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="category" class="fs_0_7">Danh mục:</label>
+                                    <label for="category" class="fs_0_7">Loại thông tin cần báo tin:</label>
                                     <select class="form-control" id="category" name="category" required>
                                         <option value="Cơ sở vật chất">Cơ sở vật chất</option>
-                                        <option value="An ninh">An ninh</option>
+                                        <option value="Vệ sinh môi trường">Vệ sinh môi trường</option>
+                                        <option value="Mất trật tự an ninh trường học">Mất trật tự an ninh trường học</option>
+                                        <option value="Vi phạm nội quy ký túc xá">Vi phạm nội quy ký túc xá</option>
+                                        <option value="Người tốt làm việc tốt">Người tốt làm việc tốt</option>
                                         <option value="Khác">Khác</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="level" class="fs_0_7">Mức độ</label>
-                                    <select class="form-control" id="level" name="level" required>
-                                        <option value="short">Khẩn cấp</option>
-                                        <option value="medium">Bình thường</option>
-                                        <option value="serious">Sử lý sau</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -128,7 +123,7 @@
         </div>
     </nav>
 @endsection
-{{-- 
+{{--
 @section('addFileFooter')
 <script src="{{ asset('asset/js/form.js')}}"></script>
 @endsection --}}

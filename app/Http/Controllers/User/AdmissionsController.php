@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class AdmissionsController extends Controller
 {
-    public function index(Request $request)
+    public function create(Request $request)
     {
         Admission::create($request->all());
         return redirect()->back();
+    }
+
+    public function index()
+    {
+        return view('TruyenSinh');
     }
 }
