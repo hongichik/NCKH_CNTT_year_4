@@ -28,7 +28,7 @@ class ReportController extends Controller
     {
         $validatedData = $request->validate([
             'id_department' => 'required',
-            'id_area' => 'required',
+            'area' => 'required',
             'category' => 'required',
             'level' => 'required',
             'content' => 'required',
@@ -45,7 +45,7 @@ class ReportController extends Controller
         }
         Report::create([
             'id_department' => $request->input('id_department'),
-            'id_area' => $request->input('id_area'),
+            'area' => $request->input('area'),
             'category' => $request->input('category'),
             'level' => $request->input('level'),
             'content' => $request->input('content'),

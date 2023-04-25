@@ -13,7 +13,7 @@ class MediaImageComposer{
      */
     public function video(View $view)
     {
-        $view->with('test_content', "Kiểm thử");
+        $view->with('test_content', "Chạy thử nghiệm");
     }
 
     public function compose(View $view)

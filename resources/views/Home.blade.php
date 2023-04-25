@@ -345,12 +345,16 @@
     </nav>
 
 
+    <div class="d-flex flex-column py-3 bg-white">
+        <h1 class="txt-blue-3 text-center pt-3 mb-4">Đăng ký tư vấn tuyển sinh {{ date('Y') }}</h1>
+        @include('includes.home.admissions')
+
+    </div>
 
 
 
 
-
-    <nav class="d-flex flex-column py-3">
+    <nav class="d-flex flex-column py-3" style="background-color: rgb(247, 251, 255)">
         <h1 class="txt-blue-3 text-center pt-3">Các hoạt động và sự kiện</h1>
         <div class="underlined_div"></div>
         <div class="d-flex flex-wrap container-fluid px-3 px-xl-5 pt-4">
@@ -374,7 +378,7 @@
                     <div class="carousel-inner">
                         @foreach ($hoat_dongs as $key => $hoat_dong)
                             <a href="{{ $hoat_dong->url_post }}"
-                                class="carousel-item shadow 
+                                class="carousel-item shadow
                                 @if ($key == 0) active @endif
                                 ">
                                 <div class="d-flex flex-column">
@@ -452,7 +456,7 @@
         </div>
     </nav>
 @endsection
-{{-- 
+{{--
 @section('addFileFooter')
 <script src="{{ asset('asset/js/form.js')}}"></script>
 @endsection --}}

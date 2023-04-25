@@ -52,7 +52,7 @@
                     <div class="d-flex justify-content-between">
                         <div></div>
                         <div class="d-flex justify-content-end" style="position: relative">
-                            <ul class="d-flex m-0" style="list-style: none">
+                            {{-- <ul class="d-flex m-0" style="list-style: none">
                                 <li class="px-2 d-flex">
                                     <a href="#" class="m-auto">
                                         <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
@@ -65,7 +65,7 @@
                                             alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                             <div class="d-flex ml-2 mr-1">
                                 <div class="m-auto"
                                     style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)">

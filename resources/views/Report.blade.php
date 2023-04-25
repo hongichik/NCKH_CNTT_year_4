@@ -50,11 +50,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <label for="area" class="fs_0_7">Khu vực:</label>
-                                    <select class="form-control" id="area" name="id_area" required>
-                                        @foreach ($area as $value)
-                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" class="form-control" name="area" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="department" class="fs_0_7">Phòng ban:</label>
@@ -75,9 +71,9 @@
                                 <div class="form-group">
                                     <label for="level" class="fs_0_7">Mức độ</label>
                                     <select class="form-control" id="level" name="level" required>
-                                        <option value="short">Thấp</option>
-                                        <option value="medium">Trung bình</option>
-                                        <option value="serious">Cao</option>
+                                        <option value="short">Khẩn cấp</option>
+                                        <option value="medium">Bình thường</option>
+                                        <option value="serious">Sử lý sau</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
