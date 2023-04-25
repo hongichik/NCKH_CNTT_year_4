@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @php
-    
+
     if (isset($post)) {
         $titlePage = $nameCategory;
         $url = asset('post') . '/' . $urlCategory . '/';
@@ -122,5 +122,6 @@
                 @endif
             </div>
         </div>
+        @include('includes.home.admissions')
     </nav>
 @endsection

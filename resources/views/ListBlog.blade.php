@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @php
-    
+
     if (isset($post)) {
         $titlePage = $nameCategory;
         $url = asset('post') . '/' . $urlCategory . '/';
@@ -119,5 +119,7 @@
                 @endif
             </div>
         </div>
+        
+
     </nav>
 @endsection

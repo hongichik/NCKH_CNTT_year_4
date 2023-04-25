@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\User\AdmissionsController;
 use TCG\Voyager\Facades\Voyager;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\ReportController;
@@ -55,6 +56,8 @@ Route::get('post/{slugCategory}/{slugPost}', [PostController::class, 'post'])->n
 Route::get('blog', [BlogController::class, 'index']);
 Route::get('blog/search', [BlogController::class, 'search']);
 Route::get('blog/{blogSlug}', [BlogController::class, 'blog']);
+
+Route::post('/admissions',[AdmissionsController::class,'index'])->name('admissions');
 
 Route::post('star', [StarContrllor::class, 'index'])->name('star');
 
