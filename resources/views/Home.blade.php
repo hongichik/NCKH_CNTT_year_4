@@ -344,12 +344,7 @@
         </div>
     </nav>
 
-
-    <div class="d-flex flex-column py-3 bg-white">
-        <h1 class="txt-blue-3 text-center pt-3 mb-4">Đăng ký tư vấn tuyển sinh {{ date('Y') }}</h1>
-        @include('includes.home.admissions')
-
-    </div>
+    @include('includes.home.admissions')
 
 
 
