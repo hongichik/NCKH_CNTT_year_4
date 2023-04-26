@@ -25,7 +25,8 @@
                 </select>
             </div>
             <div class="mb-3">
-                <select type="text" class="form-control fs_0_7 bg-gray-coler-1" id="chuongtrinh" name="chuongtrinh" required>
+                <select type="text" class="form-control fs_0_7 bg-gray-coler-1" id="chuongtrinh" name="chuongtrinh"
+                    required>
                     <option value="" selected hidden>Ngành có nguyện vọng học*</option>
                     <option value="Công nghệ thông tin">Công nghệ thông tin</option>
                     <option value="Khoa học máy tính" class="thacsi-only">Khoa học máy tính</option>
@@ -62,7 +63,8 @@
                 </div>
             </div>
             <div class="mb-3">
-                <input type="date" name="birthday" class="form-control fs_0_7 bg-gray-coler-1" required>
+                <input placeholder="Ngày sinh*" name="birthday" type="text" class="form-control fs_0_7 bg-gray-coler-1"
+                onfocus="(this.type='date')"/>
             </div>
 
             <div class="mb-3">
