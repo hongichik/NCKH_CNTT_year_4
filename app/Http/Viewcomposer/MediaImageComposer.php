@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Viewcomposer;
 
+use App\Models\StudentImage;
 use Illuminate\View\View;
 
 
@@ -11,14 +12,15 @@ class MediaImageComposer{
      * @param  mixed $view
      * @return void
      */
-    public function video(View $view)
+    public function images(View $view)
     {
-        $view->with('test_content', "Chạy thử nghiệm");
+        $images = StudentImage::where('status','1')->get();
+        $view->with('student_images', $images);
     }
 
     public function compose(View $view)
     {
-        $this->video($view);
+        $this->images($view);
     }
 }
 ?>

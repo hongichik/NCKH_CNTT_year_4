@@ -75,13 +75,10 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
+                @include('includes.SearchPage', ['url_get' => asset('blog/search')])
+                @include('includes.StudentImages')
                 @include('includes.home.map')
-                {{-- @include('includes.RalatedPost', [
-                    'title' => 'Bài viết nổi bật',
-                    'Posts' => $postHot,
-                    'url' => $urlPostHot,
-                ]) --}}
-
+                @include('includes.home.SupportCompany')
             </div>
         </div>
         <div class="navbar-nav mr-auto pl-2 pt-2  px-0 w-100">

@@ -109,17 +109,9 @@
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
                 {{-- <h3 class="fs_1">Thư viện hình ảnh</h3> --}}
+                @include('includes.StudentImages')
                 @include('includes.home.map')
                 @include('includes.home.SupportCompany')
-                @if (!Illuminate\Support\Facades\Request::is('*post*'))
-                    @include('includes.SearchPage', ['url_get' => asset('blog/search')])
-                    @include('includes.home.map')
-                    {{-- @include('includes.RalatedPost', [
-                        'title' => 'Bài viết nổi bật',
-                        'Posts' => $postHot,
-                        'url' => $urlPostHot,
-                    ]) --}}
-                @endif
             </div>
         </div>
         @include('includes.home.admissions')

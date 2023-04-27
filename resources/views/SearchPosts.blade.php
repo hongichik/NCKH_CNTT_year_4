@@ -1,7 +1,7 @@
 @extends('templates.default')
 
 @php
-    
+
 @endphp
 @section('SeoConent')
     <meta name="description" content="{{ setting('home.description') }}" />
@@ -92,15 +92,9 @@
             </div>
 
             <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
-                @if (!Illuminate\Support\Facades\Request::is('*post*'))
-                    @include('includes.SearchPage', ['url_get' => asset('blog/search')])
-                    @include('includes.home.map')
-                    {{-- @include('includes.RalatedPost', [
-                        'title' => 'Bài viết nổi bật',
-                        'Posts' => $postHot,
-                        'url' => $urlPostHot,
-                    ]) --}}
-                @endif
+                @include('includes.StudentImages')
+                @include('includes.home.map')
+                @include('includes.home.SupportCompany')
             </div>
         </div>
     </nav>

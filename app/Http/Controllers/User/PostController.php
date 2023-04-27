@@ -14,7 +14,12 @@ class PostController extends Controller
 {
     public function index($slugCategory)
     {
-        $posts  = Post::whereRelation('category', 'slug', $slugCategory)->paginate(9);
+        $idCategory = Category::where('slug',$slugCategory)->first()->id;
+        $arrayPostCategory = DB::table('post_category')
+        ->where('category_id', $idCategory)
+        ->pluck('post_id')
+        ->toArray();
+        $posts  = Post::whereIn('id',$arrayPostCategory)->orwhere('category_id',$idCategory)->paginate(9);
         if ($posts->isEmpty()) {
             $posts =  Category::where('slug', $slugCategory)->first()->PostMany()->paginate(9);
             if ($posts->isEmpty()) {
@@ -36,7 +41,6 @@ class PostController extends Controller
                 "nameCategory" => $category->name,
                 "urlCategory" => $slugCategory,
                 "posts" => $posts,
-                'postHot' => $postHot
             ]
         );
     }
@@ -45,16 +49,6 @@ class PostController extends Controller
     public function search(Request $request)
     {
         $posts  = Post::where('title', 'LIKE', "%{$request->title}%")->paginate(9);
-        // $posts  = Post::where('category', 'slug', $slugCategory)->paginate(9);
-        // $postHot = DB::table('star_post_blogs')->select(DB::raw("posts.title , posts.slug"), DB::raw("categories.slug categoty_slug"), DB::raw("star_post_blogs.post_id"), DB::raw("count(post_id) sumstar"), DB::raw("sum(star)/count(post_id) avgstar"))
-        // ->groupBy('post_id')->havingRaw("sumstar > 0")
-        // ->join('posts', DB::raw("posts.id"), '=', 'star_post_blogs.post_id')
-        // ->join('categories', DB::raw("posts.category_id"), '=', 'categories.id')->orderByDesc('avgstar')->paginate(6);
-        // $category =  Category::where('slug', $slugCategory)->first();
-
-        // if ($category == null) {
-        //     return redirect()->route('home');
-        // }
         return view('SearchPosts')->with(
             [
                 "post" => true,

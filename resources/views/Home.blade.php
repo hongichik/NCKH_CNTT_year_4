@@ -171,7 +171,7 @@
                     <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
                         <img src="img/icon/Map_light.svg" alt="" style="font-size: 1rem" class="mr-2" />
                         <h2 class="txt-blue-2 my-auto fs_0_7" style="font-weight: 500; color: #fff">
-                            Bản đồ chỉ dẫn {{ $test_content }}
+                            Bản đồ chỉ dẫn 
                         </h2>
                     </div>
 
