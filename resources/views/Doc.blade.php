@@ -129,7 +129,9 @@
         </div>
 
         <div class="pl-xl-3 pl-lg-1 pr-0 mt-1 col-lg-3 d-none d-lg-flex flex-column">
+            @include('includes.StudentImages')
             @include('includes.home.map')
+            @include('includes.home.SupportCompany')
         </div>
 
     </div>
