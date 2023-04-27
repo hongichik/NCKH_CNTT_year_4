@@ -10,8 +10,11 @@
     <meta name="author" content="Phạm Nguyên Hồng Đại học hạ long" />
     <meta property="og:locale" content="vi_VN" />
     <meta property="og:type" content="website" />
-    {{-- <meta name="google-site-verification" content="W60o5FIiNTC4qM0e14lVCrmQOH7MDm2jy50E3fvvTHs" /> //tạm thời để trống cái này dùng để tối ưu tìm kiếm
-            //https://thietkephanmem.com/huong-dan-cach-lay-ma-google-site-verification-dua-vao-web-de-xac-minh-chu-quyen-so-huu-trang-web-cua-ban-doi-voi-google-search-console-tt8339.aspx --}}
+    {{--
+    <meta name="google-site-verification" content="W60o5FIiNTC4qM0e14lVCrmQOH7MDm2jy50E3fvvTHs" /> //tạm thời để trống
+    cái này dùng để tối ưu tìm kiếm
+    //https://thietkephanmem.com/huong-dan-cach-lay-ma-google-site-verification-dua-vao-web-de-xac-minh-chu-quyen-so-huu-trang-web-cua-ban-doi-voi-google-search-console-tt8339.aspx
+    --}}
     <meta name="copyright" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
     <meta name="twitter:card" content="website" />
     <meta name="twitter:site" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
@@ -56,14 +59,14 @@
     </div>
 
     <script>
-      var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "104375599206993");
+        var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "100905631728352");
       chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
     <!-- Your SDK code -->
     <script>
-      window.fbAsyncInit = function() {
+        window.fbAsyncInit = function() {
         FB.init({
           xfbml            : true,
           version          : 'v16.0'
