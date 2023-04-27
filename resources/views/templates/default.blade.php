@@ -17,18 +17,6 @@
     <meta name="twitter:site" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
     <meta property="og:site_name" content="Khoa Công Nghệ Thông Tin Đại học Hạ Long" />
     <meta name="twitter:creator" content="{{ env('APP_URL') }}" />
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S9W3J0QRW9"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'G-S9W3J0QRW9');
-    </script>
     @yield('SeoConent')
 
     <link rel="shortcut icon" href="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo')) }}"
@@ -60,6 +48,36 @@
 </head>
 
 <body>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "104375599206993");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v16.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     @include('includes.Header')
     @yield('content')
     @include('includes.Footer')
