@@ -27,7 +27,7 @@
 
         <div class="col-lg-9 col-12 px-0 pt-2 d-flex flex-wrap rounded shadow px-3 pb-3"
             style=" justify-content: start; align-content: baseline; ">
-            <h3 class="fs_1 font-weight-700 w-100 pt-2">Biểu mẫu văn bản</h3>
+            <h3 class="fs_1 font-weight-700 w-100 pt-2">Các công bố</h3>
             <div class="d-flex w-100 flex-column">
                 <div class="flex w-100">
                     <div class="custom-control custom-switch d-flex justify-content-end fs_0_6">
