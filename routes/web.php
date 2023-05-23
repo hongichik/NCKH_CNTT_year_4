@@ -13,6 +13,7 @@ use App\Http\Controllers\User\PageController;
 use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\studentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +62,8 @@ Route::post('/admissions',[AdmissionsController::class,'create'])->name('admissi
 Route::get('/admissions',[AdmissionsController::class,'index'])->name('admissions');
 
 Route::post('star', [StarContrllor::class, 'index'])->name('star');
+
+Route::get('student', [studentController::class, 'index'])->name('star');
 
 Route::get('/page/{namePage}', [PageController::class, 'index']);
 Route::group(['prefix' => 'admin'], function () {
