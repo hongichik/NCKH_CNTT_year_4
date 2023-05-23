@@ -115,7 +115,7 @@
                                             @php
                                                 $id_new_1 = 0;
                                             @endphp
-                                            @foreach ($new_1->PostMany->skip(0)->take(8) as $new)
+                                            @foreach ($new_1->PostMany->sortByDesc('created_at')->skip(0)->take(8) as $new)
                                                 @php
                                                     $id_new_1 += 1;
                                                 @endphp
@@ -171,7 +171,7 @@
                     <div class="d-flex p-2" style="background-color: var(--blue-coler-4)">
                         <img src="img/icon/Map_light.svg" alt="" style="font-size: 1rem" class="mr-2" />
                         <h2 class="txt-blue-2 my-auto fs_0_7" style="font-weight: 500; color: #fff">
-                            Bản đồ chỉ dẫn 
+                            Bản đồ chỉ dẫn
                         </h2>
                     </div>
 
