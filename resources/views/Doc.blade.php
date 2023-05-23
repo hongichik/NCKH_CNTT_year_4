@@ -67,7 +67,7 @@
                                     <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_from">
                                 </div>
                                 <div class="mb-3 d-flex col-12 col-md-6 p-0">
-                                    <label class="text-nowrap my-auto pr-2">đến </label>
+                                    <label class="text-nowrap my-auto pr-2 pl-0 pl-md-2">đến </label>
                                     <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_to">
                                 </div>
                             </div>
