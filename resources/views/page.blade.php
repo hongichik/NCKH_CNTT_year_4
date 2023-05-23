@@ -20,6 +20,11 @@
 @endsection
 
 @section('content')
+<style>
+    p{
+        margin: 0;
+    }
+</style>
     <nav class="d-flex flex-column py-3" style="background-color: rgb(247, 251, 255)">
         <div class="d-flex container-fluid px-3 px-xl-5 flex-column">
             @include('includes.breadcrumb', ['slug_active' => $page->title])
