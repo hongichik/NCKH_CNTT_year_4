@@ -21,7 +21,7 @@
 
 @section('content')
 <style>
-    p ul{
+    p, ul{
         margin: 0;
     }
 </style>
