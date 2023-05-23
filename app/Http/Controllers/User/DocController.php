@@ -14,7 +14,7 @@ class DocController extends Controller
         $author = request()->has('author') ? request()->query('author') : null;
         $date_from = request()->has('date_from') ? request()->query('date_from') : null;
         $date_to = request()->has('date_to') ? request()->query('date_to') : null;
-        $title = request()->has('title') ? request()->query('title') : null;
+        $des = request()->has('des') ? request()->query('des') : null;
         // dd($date_from);
         $documents = Document::select('*');
 
@@ -30,8 +30,8 @@ class DocController extends Controller
             $documents = $documents->where('created_at', '<=', $date_to);
         }
 
-        if ($title) {
-            $documents = $documents->where('title', 'like', '%' . $title . '%');
+        if ($des) {
+            $documents = $documents->where('des', 'like', '%' . $des . '%');
         }
 
         $documents = $documents->paginate(10);

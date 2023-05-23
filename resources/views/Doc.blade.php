@@ -52,7 +52,7 @@
                     </div>
                     <div class="mt-3" id="filerShow" style="display: none">
                         <form action="/doc" method="GET" class="d-flex pl-2 fs_0_7 justify-content-between flex-wrap">
-                            <div class="mb-3 d-flex">
+                            <div class="mb-3 d-flex w-100">
                                 <label class="text-nowrap my-auto pr-2">Tác giả</label>
                                 <select type="text" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="author">
                                     <option value="">Hiển thị tất cả</option>
@@ -61,21 +61,25 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="mb-3 d-flex">
-                                <label class="text-nowrap my-auto pr-2">Thời gian từ </label>
-                                <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_from">
+                            <div class="d-flex w-100 flex-wrap">
+                                <div class="mb-3 d-flex col-12 col-md-6 p-0">
+                                    <label class="text-nowrap my-auto pr-2">Thời gian từ </label>
+                                    <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_from">
+                                </div>
+                                <div class="mb-3 d-flex col-12 col-md-6 p-0">
+                                    <label class="text-nowrap my-auto pr-2">đến </label>
+                                    <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_to">
+                                </div>
                             </div>
-                            <div class="mb-3 d-flex">
-                                <label class="text-nowrap my-auto pr-2">đến </label>
-                                <input type="date" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="date_to">
+
+                            <div class="d-flex w-100 pb-3">
+                                <label class="text-nowrap my-auto pr-2 mx-auto">Tìm kiếm</label>
+                                <input type="text" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="des">
+                                <div class="d-flex justify-content-end flex-grow-1 pl-2">
+                                    <button type="submit" class="btn btn-primary fs_0_6 text-nowrap">Tìm kiếm</button>
+                                </div>
                             </div>
-                            <div class="mb-3 d-flex">
-                                <label class="text-nowrap my-auto pr-2">Tìm kiếm</label>
-                                <input type="text" class="form-control fs_0_6 bg-gray-coler-1 p-0 pr-1" name="title">
-                            </div>
-                            <div class="d-flex justify-content-end flex-grow-1 mb-3">
-                                <button type="submit" class="btn btn-primary fs_0_6">Tìm kiếm</button>
-                            </div>
+
 
                         </form>
                     </div>
