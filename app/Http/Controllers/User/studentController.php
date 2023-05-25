@@ -15,4 +15,7 @@ class studentController extends Controller
             'students' =>TypicalStudent::all()
         ]);
     }
+
+
+
 }

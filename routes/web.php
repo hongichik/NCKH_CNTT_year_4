@@ -66,7 +66,11 @@ Route::post('star', [StarContrllor::class, 'index'])->name('star');
 Route::get('student', [studentController::class, 'index'])->name('star');
 
 Route::get('/page/{namePage}', [PageController::class, 'index']);
+
+
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/admissions/export', [AdmissionsController::class, 'export']);
     Voyager::routes();
+
 });
 ?>

@@ -117,7 +117,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="container-fluid px-2 px-xl-2 d-flex justify-content-between">
                         <div class="d-none d-sm-flex justify-content-end" style="position: relative">
-                            <ul class="d-flex m-0" style="list-style: none">
+                            {{-- <ul class="d-flex m-0" style="list-style: none">
                                 <li class="px-2 d-flex">
                                     <a href="#" class="m-auto">
                                         <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
@@ -130,7 +130,7 @@
                                             alt="icon việt nam" style="height: 1.2rem" />
                                     </a>
                                 </li>
-                            </ul>
+                            </ul> --}}
                             <div class="d-flex ml-2 mr-1">
                                 <div class="m-auto"
                                     style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)"></div>
@@ -167,7 +167,7 @@
             <div class="collapse navbar-collapse nav_item" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <div class="d-flex d-sm-none justify-content-end" style="position: relative">
-                        <ul class="d-flex m-0" style="list-style: none">
+                        {{-- <ul class="d-flex m-0" style="list-style: none">
                             <li class="px-2 d-flex">
                                 <a href="#" class="m-auto">
                                     <img src="{{ asset('asset/img/icon/icons8-vietnam-96.png') }}"
@@ -180,7 +180,7 @@
                                         alt="icon việt nam" style="height: 1.2rem" />
                                 </a>
                             </li>
-                        </ul>
+                        </ul> --}}
                         <div class="d-flex ml-2 mr-1">
                             <div class="m-auto"
                                 style="width: 0.05rem; height: 1rem; background-color: var(--blue-coler-1)"></div>
