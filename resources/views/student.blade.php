@@ -12,17 +12,17 @@
     <meta property="og:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
     <meta property="og:description" content="{{ setting('home.description') }} " />
     <meta property="og:url" content="{{ env('APP_URL') . $_SERVER['REQUEST_URI'] }}" />
-    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+    <meta property="og:image" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.seo_image')) }}" />
     <meta property="og:home_name" content="{{ setting('home.title') }} | {{ $titlePage }}" />
     <meta name="twitter:title" content="{{ setting('home.title') }} | {{ $titlePage }}" />
     <meta name="twitter:description" content="{{ setting('home.description') }} " />
     <meta name="twitter:image"
-        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.seo_image')) }}" />
     <meta name="title" content="{{ setting('home.title') }}" />
 
-    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+    <meta name="thumbnail" content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.seo_image')) }}" />
     <meta property="og:image:secure_url"
-        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.logo_Menu')) }}" />
+        content="{{ asset('storage') . '/' . str_replace('\\', '/', setting('home.seo_image')) }}" />
 
 
     <meta name="theme-color" content="#0086cd" />
@@ -58,7 +58,7 @@
                                         src="{{ asset('storage').'/'.$item->avatar }}"
                                         alt="Ảnh Ngôn ngữ SQL" width="100%" height="auto">
                                     <div style="padding: 10px;">
-                                        <p style="color: black" class="m-0 p-2">Pham nguyen hong khmtk 5</p>
+                                        <p style="color: black" class="m-0 p-2">{{ $item->des }}</p>
                                     </div>
                                 </div>
                             </a>

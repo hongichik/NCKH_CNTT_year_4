@@ -19,7 +19,7 @@ class PostController extends Controller
         ->where('category_id', $idCategory)
         ->pluck('post_id')
         ->toArray();
-        $posts  = Post::whereIn('id',$arrayPostCategory)->orwhere('category_id',$idCategory)->paginate(9);
+        $posts  = Post::whereIn('id',$arrayPostCategory)->orderBy('created_at', 'DESC')->orwhere('category_id',$idCategory)->paginate(9);
         if ($posts->isEmpty()) {
             $posts =  Category::where('slug', $slugCategory)->first()->PostMany()->paginate(9);
             if ($posts->isEmpty()) {
