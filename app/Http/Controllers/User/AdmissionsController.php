@@ -31,7 +31,7 @@ class AdmissionsController extends Controller
                 // Tạo mới thư mục nếu không tồn tại
                 File::makeDirectory(public_path('/export/admission'));
             }
-            $file = fopen(public_path("/export/admission/data-admission.csv"), "w");
+            $file = fopen(public_path("/export/admission/data-truyen-sinh.csv"), "w");
 
             $data = Admission::orderBy('created_at', 'desc')->get();
             $first_line = [
@@ -63,7 +63,7 @@ class AdmissionsController extends Controller
                 fputcsv($file, $arr);
             }
             fclose($file);
-            return Response::download(public_path("/export/admission/data-admission.csv"), null, [
+            return Response::download(public_path("/export/admission/data-truyen-sinh.csv"), null, [
                 'Content-Type' => 'text/csv',
             ]);
         } else {
