@@ -36,7 +36,7 @@
             @endif
         @endforeach
         @include('voyager::multilingual.language-selector')
-        <a href="demo" class="btn btn-info">
+        <a href="admin/admissions/export" class="btn btn-info">
             <span>Xuất excel</span></span>
         </a>
     </div>
