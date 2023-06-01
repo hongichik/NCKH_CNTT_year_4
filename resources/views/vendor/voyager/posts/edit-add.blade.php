@@ -39,7 +39,6 @@
                         {{ csrf_field() }}
 
                         <div class="panel-body">
-                            <h3>nội dung</h3>
                             @if (count($errors) > 0)
                                 <div class="alert alert-danger">
                                     <ul>

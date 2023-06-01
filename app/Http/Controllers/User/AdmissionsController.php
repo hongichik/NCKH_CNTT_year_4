@@ -5,9 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Admission;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class AdmissionsController extends Controller
 {
@@ -24,17 +24,16 @@ class AdmissionsController extends Controller
 
     public function export(Request $request)
     {
-        if (Auth::user() == null)
+        if (Auth::user() == null) {
             return redirect('/');
+        }
+
         if (Auth::user()->can('browse', app(Admission::class))) {
-            if (!File::exists(public_path('/export/admission'))) {
-                // Tạo mới thư mục nếu không tồn tại
-                File::makeDirectory(public_path('/export/admission'));
-            }
-            $file = fopen(public_path("/export/admission/data-truyen-sinh.csv"), "w");
+            $filePath = 'export/admission/data-truyen-sinh.csv';
 
             $data = Admission::orderBy('created_at', 'desc')->get();
-            $first_line = [
+            $csvData = [];
+            $csvData[] = [
                 "STT",
                 "Họ và tên",
                 "Số điện thoại",
@@ -46,9 +45,8 @@ class AdmissionsController extends Controller
                 "Chương trình đào tạo",
                 "Ngày gửi",
             ];
-            fputcsv($file, $first_line);
             foreach ($data as $key => $item) {
-                $arr = [
+                $csvData[] = [
                     $key + 1,
                     $item->name,
                     $item->phone,
@@ -60,11 +58,17 @@ class AdmissionsController extends Controller
                     $item->chuongtrinh,
                     $item->created_at,
                 ];
-                fputcsv($file, $arr);
             }
-            fclose($file);
-            return Response::download(public_path("/export/admission/data-truyen-sinh.csv"), null, [
-                'Content-Type' => 'text/csv',
+
+            $csvContent = '';
+            foreach ($csvData as $row) {
+                $csvContent .= implode(',', $row) . "\n";
+            }
+
+            Storage::put($filePath, $csvContent);
+
+            return response()->download(storage_path("app/$filePath"), 'data-truyen-sinh.csv', [
+                'Content-Type' => 'text/csv; charset=UTF-8',
             ]);
         } else {
             return redirect('/');
