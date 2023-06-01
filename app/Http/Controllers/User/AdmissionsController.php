@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Admission;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Storage;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class AdmissionsController extends Controller
 {
@@ -24,16 +24,22 @@ class AdmissionsController extends Controller
 
     public function export(Request $request)
     {
+
         if (Auth::user() == null) {
             return redirect('/');
         }
 
         if (Auth::user()->can('browse', app(Admission::class))) {
-            $filePath = 'export/admission/data-truyen-sinh.csv';
+            $filePath = 'export/admission/data-truyen-sinh.xlsx';
 
             $data = Admission::orderBy('created_at', 'desc')->get();
-            $csvData = [];
-            $csvData[] = [
+
+            // Tạo đối tượng Spreadsheet
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+
+            // Định nghĩa tiêu đề cột
+            $header = [
                 "STT",
                 "Họ và tên",
                 "Số điện thoại",
@@ -45,8 +51,11 @@ class AdmissionsController extends Controller
                 "Chương trình đào tạo",
                 "Ngày gửi",
             ];
+            $sheet->fromArray($header, NULL, 'A1');
+
+            // Định nghĩa dữ liệu
             foreach ($data as $key => $item) {
-                $csvData[] = [
+                $rowData = [
                     $key + 1,
                     $item->name,
                     $item->phone,
@@ -58,17 +67,15 @@ class AdmissionsController extends Controller
                     $item->chuongtrinh,
                     $item->created_at,
                 ];
+                $sheet->fromArray($rowData, NULL, 'A' . ($key + 2));
             }
 
-            $csvContent = '';
-            foreach ($csvData as $row) {
-                $csvContent .= implode(',', $row) . "\n";
-            }
+            // Tạo đối tượng Writer để ghi dữ liệu vào tệp Excel
+            $writer = new Xlsx($spreadsheet);
+            $writer->save($filePath);
 
-            Storage::put($filePath, $csvContent);
-
-            return response()->download(storage_path("app/$filePath"), 'data-truyen-sinh.csv', [
-                'Content-Type' => 'text/csv; charset=UTF-8',
+            return response()->download($filePath, 'data-truyen-sinh.xlsx', [
+                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             ]);
         } else {
             return redirect('/');
