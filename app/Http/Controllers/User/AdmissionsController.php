@@ -4,10 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admission;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Auth;
-use PhpOffice\PhpSpreadsheet\Spreadsheet;
-use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Illuminate\Support\Facades\File;
 
 class AdmissionsController extends Controller
 {
@@ -25,21 +26,26 @@ class AdmissionsController extends Controller
     public function export(Request $request)
     {
 
-        if (Auth::user() == null) {
+        if (Auth::user() == null)
             return redirect('/');
-        }
-
         if (Auth::user()->can('browse', app(Admission::class))) {
-            $filePath = 'export/admission/data-truyen-sinh.xlsx';
+            if (!File::exists(public_path('/export/admission'))) {
+                // Tạo mới thư mục nếu không tồn tại
+                File::makeDirectory(public_path('/export/admission'));
+            }
+            $file = fopen(public_path("/export/admission/data-truyen-sinh.csv"), "w");
+            fputs( $file, $bom = chr(0xEF) . chr(0xBB) . chr(0xBF) );
 
-            $data = Admission::orderBy('created_at', 'desc')->get();
-
-            // Tạo đối tượng Spreadsheet
-            $spreadsheet = new Spreadsheet();
-            $sheet = $spreadsheet->getActiveSheet();
-
-            // Định nghĩa tiêu đề cột
-            $header = [
+            $currentDateTime = Carbon::now();
+            Admission::where('status', null)
+            ->orWhere('status', 0)
+            ->orderBy('created_at', 'desc')
+            ->update([
+                'status' => 1,
+                'export_at' => $currentDateTime
+            ]);
+            $data = Admission::where('status',null)->orWhere('status', 0)->orderBy('created_at', 'desc')->get();
+            $first_line = [
                 "STT",
                 "Họ và tên",
                 "Số điện thoại",
@@ -51,11 +57,9 @@ class AdmissionsController extends Controller
                 "Chương trình đào tạo",
                 "Ngày gửi",
             ];
-            $sheet->fromArray($header, NULL, 'A1');
-
-            // Định nghĩa dữ liệu
+            fputcsv($file, $first_line);
             foreach ($data as $key => $item) {
-                $rowData = [
+                $arr = [
                     $key + 1,
                     $item->name,
                     $item->phone,
@@ -67,15 +71,11 @@ class AdmissionsController extends Controller
                     $item->chuongtrinh,
                     $item->created_at,
                 ];
-                $sheet->fromArray($rowData, NULL, 'A' . ($key + 2));
+                fputcsv($file, $arr);
             }
-
-            // Tạo đối tượng Writer để ghi dữ liệu vào tệp Excel
-            $writer = new Xlsx($spreadsheet);
-            $writer->save($filePath);
-
-            return response()->download($filePath, 'data-truyen-sinh.xlsx', [
-                'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            fclose($file);
+            return Response::download(public_path("/export/admission/data-truyen-sinh.csv"), null, [
+                'Content-Type' => 'text/csv',
             ]);
         } else {
             return redirect('/');
