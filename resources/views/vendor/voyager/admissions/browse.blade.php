@@ -36,9 +36,15 @@
             @endif
         @endforeach
         @include('voyager::multilingual.language-selector')
-        <a href="admissions/export" class="btn btn-info">
-            <span>Xuất excel</span></span>
+        <a href="admissions/export" class="btn btn-info" onclick="reloadPage()">
+            <span>Xuất excel</span>
         </a>
+
+        <script>
+            function reloadPage() {
+                location.reload();
+            }
+        </script>
     </div>
 
 @stop
