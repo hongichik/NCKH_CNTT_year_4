@@ -14,6 +14,7 @@ use App\Http\Controllers\User\PostController;
 use App\Http\Controllers\User\CommentController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\studentController;
+use App\Http\Controllers\User\StudentNewpaperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,9 @@ Route::get('/page', function () {
     return redirect('/');
 });
 
-Route::get('login', ['uses' => $url.'AuthController@index', 'as' => 'login']);
+
+
+Route::get('login', [AuthController::class, 'index']);
 Route::post('checkauth', [AuthController::class, 'CheckAuth']);
 Route::get('logout', [AuthController::class, 'logout']);
 
@@ -67,10 +70,12 @@ Route::get('student', [studentController::class, 'index'])->name('star');
 
 Route::get('/page/{namePage}', [PageController::class, 'index']);
 
+Route::get('student-newspaper', [StudentNewpaperController::class,'index']);
+Route::post('student-newspaper', [StudentNewpaperController::class,'create'])->name('postNewspaper');
+Route::get('student-newspaper/{filename}', [StudentNewpaperController::class,'file'])->name('getFileNewspaper')->where('filename', '.*');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/admissions/export', [AdmissionsController::class, 'export']);
     Voyager::routes();
-
 });
 ?>
