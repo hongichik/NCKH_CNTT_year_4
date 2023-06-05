@@ -4,7 +4,10 @@
         <div class="d-flex flex-wrap">
             <div class="d-flex flex-column pt-2">
                 <p class="m-0 p-0" style="font-size: 0.6rem; color: #fff">
-                    {!! setting('home.name_logo') !!}
+
+                    <b style="font-size: 0.5rem">TRƯỜNG ĐẠI HỌC HẠ LONG</b>
+                    <br>
+                    <b>KHOA CÔNG NGHỆ THÔNG TIN</b>
                 </p>
             </div>
             <div class="ml-4 mr-4" style="width: 0.05rem; background-color: var(--blue-coler-1)"></div>
