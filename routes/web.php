@@ -38,7 +38,7 @@ Route::get('/page', function () {
 
 
 
-Route::get('login', [AuthController::class, 'index']);
+Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::post('checkauth', [AuthController::class, 'CheckAuth']);
 Route::get('logout', [AuthController::class, 'logout']);
 
