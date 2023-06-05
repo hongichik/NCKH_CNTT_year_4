@@ -19,6 +19,7 @@
                                 -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
                             font-weight: bold;
                             color: var(--blue-coler-2);
+                            text-align: center;
                         ">
                         {!! setting('home.name_logo') !!}
                     </p>
