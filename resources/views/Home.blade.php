@@ -34,7 +34,7 @@
                                 data-pause="true">
                                 <ol class="carousel-indicators m-0">
                                     <?php $key2 = 0; ?>
-                                    @foreach ($new_1->PostMany->skip(1)->take(6) as $key => $new)
+                                    @foreach ($new_1->PostMany()->latest()->take(5)->get() as $key => $new)
                                         @if ($new->status == 'PUBLISHED')
                                             @if ($key2 == 0)
                                                 <?php $key2 = 1; ?>
