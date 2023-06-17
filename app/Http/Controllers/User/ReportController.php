@@ -52,10 +52,10 @@ class ReportController extends Controller
         ]);
         // Trả về mảng chứa đường dẫn của các file đã upload
 
-        $department = Department::get();
-        foreach( $department as $value){
-            Mail::to($value->bossgmail)->send(new ReportEmail($request->input('content')));
-        }
+        // $department = Department::get();
+        // foreach( $department as $value){
+        //     Mail::to($value->bossgmail)->send(new ReportEmail($request->input('content')));
+        // }
         // Mail::to('hongichik321@gmail.com')->send(new ReportEmail($request->input('content')));
         return redirect()->back()->with('success', 'Báo cáo đã được gửi thành công.');
     }
